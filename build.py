@@ -5,8 +5,39 @@ Run: python3 build.py
 """
 
 import re, os, glob, json, time
+from PIL import Image
 
 ROOT = os.path.dirname(__file__)
+COVER_CACHE = {}  # path → (brightness, gradient_css, title_color, preview_color)
+
+def cover_adaptive(cover):
+    """Analyze cover image brightness, return (gradient_css, title_color, preview_color)."""
+    if not cover:
+        return 'var(--feat-overlay)', 'var(--text-bright)', 'var(--feat-p-color)'
+    if cover in COVER_CACHE:
+        return COVER_CACHE[cover]
+    try:
+        path = os.path.join(ROOT, cover)
+        img = Image.open(path).resize((20, 20), Image.LANCZOS).convert('RGB')
+        px = list(img.getdata())
+        r = sum(p[0] for p in px) / len(px)
+        g = sum(p[1] for p in px) / len(px)
+        b = sum(p[2] for p in px) / len(px)
+        bright = 0.299 * r + 0.587 * g + 0.114 * b
+    except Exception:
+        bright = 128
+    # Dark gradient overlay, opacity inversely proportional to brightness:
+    # darker image → lighter overlay (so image shows through)
+    # brighter image → heavier overlay (to dampen brightness for text readability)
+    a = round(max(0.45, min(0.92, bright / 200 * 0.7)), 2)
+    grad = (f'linear-gradient(to top,'
+            f'rgba(18,18,18,{a:.2f}) 0%,'
+            f'rgba(18,18,18,{a*0.55:.2f}) 30%,'
+            f'rgba(18,18,18,{a*0.18:.2f}) 60%,'
+            f'transparent 100%)')
+    result = (grad, '#fff', 'rgba(255,255,255,.8)')
+    COVER_CACHE[cover] = result
+    return result
 CONTENT_DIR = os.path.join(ROOT, 'content')
 
 # ═══════════════════════════════════════════════════════
@@ -195,8 +226,9 @@ def render_rows(rows_data):
             h += '<div class="year-divider"><span>%s</span></div>\n' % year; continue
         if rtype == 'featured':
             a = items[0]
-            badge = '<span class="badge">%s</span>' % a['course'] if a.get('course') else ''
-            h += '<section class="row row-featured" onclick="openArticle(\'%s\')"><div class="feat-cover"><img src="%s" alt=""><div class="feat-gradient"></div><div class="feat-text">%s<time>%s</time><h2>%s</h2><p>%s</p></div></div></section>\n' % (a['id'], a['cover'] or '', badge, a['date'] or '', a['title'], a['summary'])
+            badge = ('<span class="badge">%s</span>' % a['course']) if a.get('course') else ''
+            grad, tc, pc = cover_adaptive(a.get('cover'))
+            h += '<section class="row row-featured" onclick="openArticle(\'%s\')"><div class="feat-cover"><img src="%s" alt=""><div class="feat-gradient" style="background:%s"></div><div class="feat-text">%s<time>%s</time><h2 style="color:%s">%s</h2><p style="color:%s">%s</p></div></div></section>\n' % (a['id'], a['cover'] or '', grad, badge, a['date'] or '', tc, a['title'], pc, a['summary'])
         elif rtype == 'cols3':
             h += '<section class="row row-3col">\n'
             for a in items:
@@ -288,14 +320,15 @@ if os.path.isdir(GALLERY_DIR):
 
 GALLERY_ALBUM_LIST = ''
 for a in ALBUMS:
+    agrad, atc, apc = cover_adaptive(a['cover'])
     GALLERY_ALBUM_LIST += '''
     <article class="album-card" onclick="openAlbum('%s')">
       <div class="album-cover"><img src="%s" alt="" loading="lazy"></div>
-      <div class="album-body">
-        <h2>%s</h2>
-        <p>%d photos</p>
+      <div class="album-body" style="background:%s">
+        <h2 style="color:%s">%s</h2>
+        <p style="color:%s">%d photos</p>
       </div>
-    </article>''' % (a['id'], a['cover'], a['name'], a['count'])
+    </article>''' % (a['id'], a['cover'], agrad, atc, a['name'], apc, a['count'])
 
 GALLERY_ALBUM_PAGES = ''
 for a in ALBUMS:
