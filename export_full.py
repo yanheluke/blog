@@ -29,24 +29,51 @@ def copy_image(src_path, dst_dir, dst_name=None):
     return fname
 
 
-def extract_cover_info(text, resolve_image, img_prefix):
+def extract_cover_info(text, resolve_image, img_prefix, skip_subtitle=False):
     """
-    Returns (cover_filename, cover_oss_url, modified_text).
-    cover_filename is the local name saved to covers/ (or None).
+    Returns (cover_filename, cover_oss_url, subtitle, modified_text).
+    subtitle: concatenated blockquote lines after title (or None).
     """
     if not text:
-        return None, None, text
+        return None, None, None, text
 
     lines = text.split('\n')
-    all_images = []
 
+    # ── Step 1: Extract subtitle (consecutive > lines right after title) ──
+    subtitle = None
+    if not skip_subtitle:
+        past_title = False
+        subtitle_lines = []
+        subtitle_indices = []
+        for i, line in enumerate(lines):
+            s = line.strip()
+            if s.startswith('# ') and not past_title:
+                past_title = True
+                continue
+            if past_title and s == '':
+                continue
+            if past_title and s.startswith('>'):
+                subtitle_indices.append(i)
+                content = re.sub(r'^>\s?', '', s)
+                subtitle_lines.append(content)
+                if i + 1 < len(lines) and lines[i + 1].strip().startswith('>'):
+                    continue
+                subtitle = ' '.join(subtitle_lines)
+                for idx in reversed(subtitle_indices):
+                    lines.pop(idx)
+                break
+            if past_title and s:
+                break
+
+    # ── Step 2: Find images ──
+    all_images = []
     for i, line in enumerate(lines):
         m = re.search(r'!\[([^\]]*)\]\(([^)]+)\)', line)
         if m:
             all_images.append((i, m.group(2).strip('~'), m.group(0)))
 
     if not all_images:
-        return None, None, text
+        return None, None, subtitle, '\n'.join(lines)
 
     # Find first non-empty content after H1 title
     first_content_line = None
@@ -86,23 +113,23 @@ def extract_cover_info(text, resolve_image, img_prefix):
                 lines.pop(li)
                 if li < len(lines) and lines[li].strip() == '':
                     lines.pop(li)
-                return cover_filename, cover_oss, '\n'.join(lines)
+                return cover_filename, cover_oss, subtitle, '\n'.join(lines)
 
     # Rule 2: use first real image as cover (keep in body)
     for li, src, full_match in all_images:
         if src.startswith('http'):
-            return None, src, text
+            return None, src, subtitle, text
 
         disk_path, disk_fn = resolve_image(src)
         if disk_path:
             unique_fn = f'{img_prefix}_{disk_fn}'
             copy_image(disk_path, COVER_DIR, unique_fn)
-            return unique_fn, None, text
+            return unique_fn, None, subtitle, text
 
-    return None, None, text
+    return None, None, subtitle, '\n'.join(lines)
 
 
-def export_section(tag_name, folder_name):
+def export_section(tag_name, folder_name, exclude_tag=None, skip_subtitle=False):
     """Export notes for a given tag to content/{folder_name}/"""
     out_dir = os.path.join(CONTENT_DIR, folder_name)
     os.makedirs(out_dir, exist_ok=True)
@@ -114,11 +141,24 @@ def export_section(tag_name, folder_name):
         conn.close()
         return 0
 
-    rows = c.execute("""
-        SELECT n.Z_PK, n.ZTITLE, n.ZTEXT, n.ZCREATIONDATE, n.ZUNIQUEIDENTIFIER
-        FROM ZSFNOTE n JOIN Z_5TAGS j ON n.Z_PK=j.Z_5NOTES
-        WHERE j.Z_13TAGS=? AND n.ZTRASHED=0 ORDER BY n.ZCREATIONDATE DESC
-    """, (tag_pk[0],)).fetchall()
+    if exclude_tag:
+        rows = c.execute("""
+            SELECT n.Z_PK, n.ZTITLE, n.ZTEXT, n.ZCREATIONDATE, n.ZUNIQUEIDENTIFIER
+            FROM ZSFNOTE n JOIN Z_5TAGS j ON n.Z_PK=j.Z_5NOTES
+            WHERE j.Z_13TAGS=? AND n.ZTRASHED=0
+            AND NOT EXISTS (
+                SELECT 1 FROM Z_5TAGS j2
+                WHERE j2.Z_5NOTES=n.Z_PK
+                AND j2.Z_13TAGS=(SELECT Z_PK FROM ZSFNOTETAG WHERE ZTITLE=?)
+            )
+            ORDER BY n.ZCREATIONDATE DESC
+        """, (tag_pk[0], exclude_tag)).fetchall()
+    else:
+        rows = c.execute("""
+            SELECT n.Z_PK, n.ZTITLE, n.ZTEXT, n.ZCREATIONDATE, n.ZUNIQUEIDENTIFIER
+            FROM ZSFNOTE n JOIN Z_5TAGS j ON n.Z_PK=j.Z_5NOTES
+            WHERE j.Z_13TAGS=? AND n.ZTRASHED=0 ORDER BY n.ZCREATIONDATE DESC
+        """, (tag_pk[0],)).fetchall()
 
     count = 0
     for pk, title, text, create_date, note_uuid in rows:
@@ -170,9 +210,9 @@ def export_section(tag_name, folder_name):
                         break
             return None, None
 
-        # Extract cover
-        cover_filename, cover_oss_url, modified_text = extract_cover_info(
-            text, resolve_image_to_disk, img_prefix)
+        # Extract cover + subtitle
+        cover_filename, cover_oss_url, subtitle, modified_text = extract_cover_info(
+            text, resolve_image_to_disk, img_prefix, skip_subtitle=skip_subtitle)
 
         # Copy inline images with unique names
         for m in re.finditer(r'!\[([^\]]*)\]\(([^)]+)\)', modified_text):
@@ -205,6 +245,8 @@ def export_section(tag_name, folder_name):
         with open(md_path, 'w', encoding='utf-8') as f:
             f.write('---\n')
             f.write(f'title: "{title}"\n')
+            if subtitle:
+                f.write(f'subtitle: "{subtitle}"\n')
             f.write(f'date: {pub_date or ""}\n')
             if course_id:
                 f.write(f'course: {course_id}\n')
@@ -238,11 +280,12 @@ if __name__ == '__main__':
         for f in os.listdir(IMG_DIR):
             os.remove(os.path.join(IMG_DIR, f))
 
-    w = export_section('Writing', 'writing')
+    w = export_section('Writing', 'writing', exclude_tag='Writing/About')
     a = export_section('Courses/MITx', 'academic')
+    abt = export_section('Writing/About', 'about', skip_subtitle=True)
 
     img_count = len([f for f in os.listdir(IMG_DIR) if os.path.isfile(os.path.join(IMG_DIR, f))])
     cover_count = len([f for f in os.listdir(COVER_DIR) if os.path.isfile(os.path.join(COVER_DIR, f))])
-    print(f'Exported: {w} writing + {a} academic = {w+a} .md files')
+    print(f'Exported: {w} writing + {a} academic + {abt} about = {w+a+abt} .md files')
     print(f'Images: {img_count} in images/')
     print(f'Covers: {cover_count} in covers/')

@@ -28,6 +28,7 @@ os.makedirs(COVER_DIR, exist_ok=True)
 SECTIONS = {
     'writing': 'Writing',
     'academic': 'Courses/MITx',
+    'about': 'Writing/About',
 }
 
 
@@ -51,6 +52,9 @@ def search_notes(section, limit=None, since_date=None):
     """Search Bear notes for a section. Returns list of note dicts."""
     tag = SECTIONS[section]
     query = f'#{tag}'
+    # Exclude about notes from writing section
+    if section == 'writing':
+        query += ' -#Writing/About'
     if since_date:
         query += f' @cdate(>{since_date})'
 
@@ -76,28 +80,54 @@ def save_attachment(note_id, filename, dest_dir, dest_name=None):
         return None
 
 
-def extract_cover_info(text, note_id):
+def extract_cover_info(text, note_id, skip_subtitle=False):
     """
-    Analyze note body to determine cover image.
-    Returns (cover_filename, cover_oss_url, modified_text).
+    Analyze note body to determine cover image and subtitle.
+    Returns (cover_filename, cover_oss_url, subtitle, modified_text).
 
-    Rules:
-    1. First non-empty content after H1 title is an image → cover, REMOVE from body
-    2. Otherwise, first image found anywhere → cover, KEEP in body
+    subtitle: concatenated blockquote lines right after title (or None).
     """
     if not text:
-        return None, None, text
+        return None, None, None, text
 
+    id_prefix = note_id[:8] if '-' in note_id else note_id
     lines = text.split('\n')
-    all_images = []
 
+    # ── Step 1: Extract subtitle (consecutive > lines right after title) ──
+    subtitle = None
+    if not skip_subtitle:
+        past_title = False
+        subtitle_lines = []
+        subtitle_indices = []
+        for i, line in enumerate(lines):
+            s = line.strip()
+            if s.startswith('# ') and not past_title:
+                past_title = True
+                continue
+            if past_title and s == '':
+                continue
+            if past_title and s.startswith('>'):
+                subtitle_indices.append(i)
+                content = re.sub(r'^>\s?', '', s)
+                subtitle_lines.append(content)
+                if i + 1 < len(lines) and lines[i + 1].strip().startswith('>'):
+                    continue
+                subtitle = ' '.join(subtitle_lines)
+                for idx in reversed(subtitle_indices):
+                    lines.pop(idx)
+                break
+            if past_title and s:
+                break
+
+    # ── Step 2: Find images ──
+    all_images = []
     for i, line in enumerate(lines):
         m = re.search(r'!\[([^\]]*)\]\(([^)]+)\)', line)
         if m:
             all_images.append((i, m.group(2).strip('~'), m.group(0)))
 
     if not all_images:
-        return None, None, text
+        return None, None, subtitle, '\n'.join(lines)
 
     # Find first non-empty content line after the H1 title
     first_content_line = None
@@ -112,8 +142,6 @@ def extract_cover_info(text, note_id):
         if past_title and s:
             first_content_line = i
             break
-
-    id_prefix = note_id[:8] if '-' in note_id else note_id
 
     # Rule 1: cover-at-start
     if first_content_line is not None:
@@ -140,24 +168,24 @@ def extract_cover_info(text, note_id):
                 lines.pop(li)
                 if li < len(lines) and lines[li].strip() == '':
                     lines.pop(li)
-                return cover_filename, cover_oss, '\n'.join(lines)
+                return cover_filename, cover_oss, subtitle, '\n'.join(lines)
 
     # Rule 2: fallback — first real image as cover
     for li, src, full_match in all_images:
         if src.startswith('http'):
-            return None, src, text
+            return None, src, subtitle, text
 
         decoded = urllib.parse.unquote(src)
         fname = os.path.basename(decoded)
         unique_fn = f'{id_prefix}_{fname}'
         saved = save_attachment(note_id, fname, COVER_DIR, unique_fn)
         if saved:
-            return saved, None, text
+            return saved, None, subtitle, text
 
-    return None, None, text
+    return None, None, subtitle, '\n'.join(lines)
 
 
-def process_note(note, section):
+def process_note(note, section, skip_subtitle=False):
     """Export one note: save images, detect cover, write .md file. Returns True on success."""
     note_id = note['id']
     title = note.get('title', 'Untitled')
@@ -187,7 +215,7 @@ def process_note(note, section):
                 break
 
     # Detect cover
-    cover_filename, cover_oss_url, modified_text = extract_cover_info(text, note_id)
+    cover_filename, cover_oss_url, subtitle, modified_text = extract_cover_info(text, note_id, skip_subtitle=skip_subtitle)
 
     id_prefix = note_id[:8] if '-' in note_id else note_id
 
@@ -226,6 +254,8 @@ def process_note(note, section):
     with open(md_path, 'w', encoding='utf-8') as f:
         f.write('---\n')
         f.write(f'title: "{title}"\n')
+        if subtitle:
+            f.write(f'subtitle: "{subtitle}"\n')
         f.write(f'date: {pub_date}\n')
         if course_id:
             f.write(f'course: {course_id}\n')
@@ -279,7 +309,7 @@ def export_section(section, limit=None, since_date=None, full=False):
         if nid in existing:
             skipped += 1
             continue
-        if process_note(note, section):
+        if process_note(note, section, skip_subtitle=(section == 'about')):
             count += 1
 
     return count, skipped
@@ -303,7 +333,7 @@ if __name__ == '__main__':
                         help='Full re-export: clear content/ and rebuild')
     args = parser.parse_args()
 
-    sections = [args.section] if args.section else ['writing', 'academic']
+    sections = [args.section] if args.section else ['writing', 'academic', 'about']
 
     since_date = None
     if args.since:

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Yan He</title>
-<link rel="stylesheet" href="css/style.css?v=1778695913">
+<link rel="stylesheet" href="css/style.css?v=1778778748">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"></script>
@@ -50,16 +50,25 @@
       <p>摄影作品</p>
     </div>
   </section>
+  <section class="hero has-bg" style="background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),url(covers/home-about.jpg) center/cover;display:none" id="hero-about">
+    <div class="hero-inner">
+      <h1>Behind the words, <em>a person</em></h1>
+      <p>关于我 · 字里行间的碎片</p>
+    </div>
+  </section>
 </section>
 
 <div class="app-layout">
   <aside class="sidebar">
     <div class="sidebar-title">Collections</div>
     <div class="sidebar-item active" id="nav-writing" onclick="switchSection('writing')">
-      <span class="icon" style="background:var(--green);color:#000">W</span>Writing<span class="count">23</span>
+      <span class="icon" style="background:var(--green);color:#000">W</span>Writing<span class="count">22</span>
     </div>
     <div class="sidebar-item" id="nav-academic" onclick="switchSection('academic')">
       <span class="icon" style="background:var(--blue);color:#000">A</span>Academic<span class="count">42</span>
+    </div>
+    <div class="sidebar-item" id="nav-about" onclick="switchSection('about')">
+      <span class="icon" style="background:var(--red);color:#000">M</span>About<span class="count">1</span>
     </div>
     <div class="sidebar-item" id="nav-gallery" onclick="switchSection('gallery')">
       <span class="icon" style="background:var(--orange);color:#000">G</span>Gallery<span class="count">2</span>
@@ -70,51 +79,48 @@
     <div id="article-list">
       <div class="section-content active" id="section-writing"><div class="year-divider"><span>2026</span></div>
 <section class="row row-2col">
-<article class="card" onclick="openArticle('a13EE4C51')"><div class="card-img"><img src="covers/13EE4C51_kevin-luo-Pasy40R2ryE-unsplash.jpg" alt=""></div><div class="card-body"><time>2026-05-12</time><h2>生活是不确定性的。</h2><p>Let's face it - Life is uncertain 周报这个题材是学的https://www.pseudoyu.com/posts 的博客风格，但人家能保持每两周写一篇，我还是算了吧:)...</p></div></article>
+<article class="card" onclick="openArticle('a13EE4C51')"><div class="card-img"><img src="covers/13EE4C51_kevin-luo-Pasy40R2ryE-unsplash.jpg" alt=""></div><div class="card-body"><time>2026-05-12</time><h2>生活是不确定性的。</h2><p class="card-subtitle">Let's face it - Life is uncertain</p><p>周报这个题材是学的https://www.pseudoyu.com/posts 的博客风格，但人家能保持每两周写一篇，我还是算了吧:) 在经历了三个月6.431x和18.6501的摧残后，今天难得的拥有了一个自由的周末写写久违的博客，虽然个人域名又忘了续费。...</p></div></article>
 <article class="card" onclick="openArticle('aE7AD4F88')"><div class="card-img"><img src="covers/E7AD4F88_shaun-low-g1fTtCjszM4-unsplash.jpg" alt=""></div><div class="card-body"><time>2026-05-11</time><h2>几亿光年</h2><p>墨尔本RMIT门口。 #Writing</p></div></article>
 </section>
 <div class="year-divider"><span>2025</span></div>
 <section class="row row-2col">
 <article class="card" onclick="openArticle('a23DA19C6')"><div class="card-img"><img src="covers/23DA19C6_2024-review-tiny.jpg" alt=""></div><div class="card-body"><time>2025-02-14</time><h2>2024-年度总结</h2><p>前言 2024年在微博上给自己立了一个OKR是「重新成为一个有趣的人」。这个「有趣」的来源，其实是翻看以前的微博时，18-19、20-21年这两段时间的整个人状态是个人最喜欢的。...</p></div></article>
-<article class="card" onclick="openArticle('a6776F028')"><div class="card-img"><img src="covers/6776F028_asakusa.jpg" alt=""></div><div class="card-body"><time>2025-01-25</time><h2>Lost in Tokyo 04</h2><p>Lost in Tokyo 04> 纪念2025.01.01 - 01.05 的五天四夜东京之旅。 很遗憾一次性并不能全部写完。 Day4: 浅草寺与庙会 第四天天气又恢复了晴朗。 这一天主要是在浅草寺和逛庙会。 雷门，全是人。...</p></div></article>
+<article class="card" onclick="openArticle('a6776F028')"><div class="card-img"><img src="covers/6776F028_asakusa.jpg" alt=""></div><div class="card-body"><time>2025-01-25</time><h2>Lost in Tokyo 04</h2><p class="card-subtitle">迷失东京04：浅草寺、庙会与更多的未完待续</p><p>纪念2025.01.01 - 01.05 的五天四夜东京之旅。 很遗憾一次性并不能全部写完。 Day4: 浅草寺与庙会 第四天天气又恢复了晴朗。 这一天主要是在浅草寺和逛庙会。 雷门，全是人。 在浅草寺看到了米家三件套之绝区零的宣传海报，至此三件套的广告全部get。不愧是米桑的故乡。 浅草寺主体建筑...</p></div></article>
 </section>
-<section class="row row-featured" onclick="openArticle('a1EC109B6')"><div class="feat-cover"><img src="covers/1EC109B6_utokyo.jpg" alt=""><div class="feat-gradient" style="background:linear-gradient(to top,rgba(18,18,18,0.45) 0%,rgba(18,18,18,0.25) 30%,rgba(18,18,18,0.08) 60%,transparent 100%)"></div><div class="feat-text"><time>2025-01-24</time><h2 style="color:#fff">Lost in Tokyo 03</h2><p style="color:rgba(255,255,255,.8)">Lost in Tokyo 03> 纪念2025.01.01 - 01.05 的五天四夜东京之旅。 很遗憾一次性并不能全部写完。 Day 3: 科学与艺术 到日本的前两天天气都很好，以至于我们有一种“沿海城市可能每天都是蓝天白云吧”的错觉。第三天就给了当头一棒，早上起床拉开窗帘就发现是个阴天。...</p></div></div></section>
+<section class="row row-featured" onclick="openArticle('a1EC109B6')"><div class="feat-cover"><img src="covers/1EC109B6_utokyo.jpg" alt=""><div class="feat-gradient" style="background:linear-gradient(to top,rgba(18,18,18,0.45) 0%,rgba(18,18,18,0.25) 30%,rgba(18,18,18,0.08) 60%,transparent 100%)"></div><div class="feat-text"><time>2025-01-24</time><h2 style="color:#fff">Lost in Tokyo 03</h2><p class="feat-subtitle">迷失东京03：科学与艺术</p><p style="color:rgba(255,255,255,.8)">纪念2025.01.01 - 01.05 的五天四夜东京之旅。 很遗憾一次性并不能全部写完。 Day 3: 科学与艺术 到日本的前两天天气都很好，以至于我们有一种“沿海城市可能每天都是蓝天白云吧”的错觉。第三天就给了当头一棒，早上起床拉开窗帘就发现是个阴天。...</p></div></div></section>
 <section class="row row-2col">
 <article class="card" onclick="openArticle('aAFCCF174')"><div class="card-img"><img src="covers/AFCCF174_beijing.jpeg" alt=""></div><div class="card-body"><time>2025-01-21</time><h2>突如其来的道别</h2><p>突如其来的道别> 原文发表在微博上。2024年6月16日从北京举家搬迁回了成都，仅仅三天后又到北京出差。在晚上下班后，突发奇想扫了一辆美团单车，在北京夏夜的凉风中骑了一个多小时，回酒店后有感而发，用手机打下了这段话。 晚上回到酒店闲着无事，下楼抽根烟，然后发现我骑到酒店的美团单车还停在原地，心血来潮又骑上了车。...</p></div></article>
-<article class="card" onclick="openArticle('a625D3083')"><div class="card-img"><img src="covers/625D3083_odaiba.jpeg" alt=""></div><div class="card-body"><time>2025-01-20</time><h2>Lost in Tkoyo 02</h2><p>Lost in Tkoyo 02> 纪念2025.01.01 - 01.05 的五天四夜东京之旅。 很遗憾一次性并不能全部写完。 迷失东京02：御台场纪念日 国内一般把**お台場**翻译成「御台场」，主要是受到数码兽大冒险第一部（digimon adventure...</p></div></article>
+<article class="card" onclick="openArticle('a625D3083')"><div class="card-img"><img src="covers/625D3083_odaiba.jpeg" alt=""></div><div class="card-body"><time>2025-01-20</time><h2>Lost in Tkoyo 02</h2><p class="card-subtitle">迷失东京02：御台场纪念日</p><p>纪念2025.01.01 - 01.05 的五天四夜东京之旅。 很遗憾一次性并不能全部写完。 迷失东京02：御台场纪念日 国内一般把**お台場**翻译成「御台场」，主要是受到数码兽大冒险第一部（digimon adventure...</p></div></article>
 </section>
 <section class="row row-2col">
-<article class="card" onclick="openArticle('a3C352D0A')"><div class="card-img"><img src="covers/3C352D0A_shibuya.jpg" alt=""></div><div class="card-body"><time>2025-01-19</time><h2>Lost in Tkoyo 01</h2><p>Lost in Tkoyo 01> 纪念2025.01.01 - 01.05 的五天四夜东京之旅。 很遗憾一次性并不能全部写完。 关于这次旅行...</p></div></article>
-<article class="card" onclick="openArticle('a92B7296C')"><div class="card-img"><img src="covers/92B7296C_BC0B9336-7354-4C58-B408-03ADF5876232_1_105_c.jpeg" alt=""></div><div class="card-body"><time>2023-02-26</time><h2>乏善可陈的二月</h2><p>这是一篇久违了四年的博客。 这几年很少对外表达，包括博客、微博、朋友圈。一方面自我感觉没什么实质上的收获和可以对外分享的东西，另一方面大概也是对自己的生活并不是特别满意。另外，在自建的博客上发表一篇完整的文章苏需要的工序还蛮多的，这种形式感会不自觉地对内容的规整性有要求，所以往往刚起了一个念头就半途而废。...</p></div></article>
+<article class="card" onclick="openArticle('a3C352D0A')"><div class="card-img"><img src="covers/3C352D0A_shibuya.jpg" alt=""></div><div class="card-body"><time>2025-01-19</time><h2>Lost in Tkoyo 01</h2><p class="card-subtitle">迷失东京01：东京塔的夜景、爱宕神社与涉谷</p><p>Lost in Tkoyo 01> 纪念2025.01.01 - 01.05 的五天四夜东京之旅。 很遗憾一次性并不能全部写完。 关于这次旅行...</p></div></article>
+<article class="card" onclick="openArticle('a92B7296C')"><div class="card-img"><img src="covers/92B7296C_BC0B9336-7354-4C58-B408-03ADF5876232_1_105_c.jpeg" alt=""></div><div class="card-body"><time>2023-02-26</time><h2>乏善可陈的二月</h2><p class="card-subtitle">这是一篇久违了四年的博客。</p><p>这是一篇久违了四年的博客。 这几年很少对外表达，包括博客、微博、朋友圈。一方面自我感觉没什么实质上的收获和可以对外分享的东西，另一方面大概也是对自己的生活并不是特别满意。另外，在自建的博客上发表一篇完整的文章苏需要的工序还蛮多的，这种形式感会不自觉地对内容的规整性有要求，所以往往刚起了一个念头就半途而废。...</p></div></article>
 </section>
 <div class="year-divider"><span>2022</span></div>
 <section class="row row-2col">
-<article class="card" onclick="openArticle('a54609B40')"><div class="card-body"><time>2022-09-18</time><h2>About Me（历史归档）</h2><p>男，四川土著，~~帅且可爱~~。 不吐槽会死星人。理性，毒舌，孤僻，宅。 会弹琴，常听J-Rock, J-Pop, Folks, Original Soundtrack。喜欢 いきものがかり (生物股长), Aimyon , Mr.Children , 宋冬野， 陈致逸 。...</p></div></article>
-<article class="card" onclick="openArticle('a86ED7855')"><div class="card-body"><time>2022-09-15</time><h2>About Me V1.1</h2><p>我是HeYan，男，四川土著，~~帅且可爱~~，🌈。理性，INTP，热爱科学，并且有点宅。会弹琴，常听J-Rock, J-Pop, Folks, Original Soundtrack。喜欢 いきものがかり (生物股长)，Aimyon ，陈致逸 。现在常住在北京。...</p></div></article>
+<article class="card" onclick="openArticle('a54609B40')"><div class="card-body"><time>2022-09-18</time><h2>About Me（历史归档）</h2><p>男，四川土著，帅且可爱。 不吐槽会死星人。理性，毒舌，孤僻，宅。 会弹琴，常听J-Rock, J-Pop, Folks, Original Soundtrack。喜欢 いきものがかり (生物股长), Aimyon , Mr.Children , 宋冬野， 陈致逸 。...</p></div></article>
+<article class="card" onclick="openArticle('a6493CCD2')"><div class="card-body"><time>2019-11-16</time><h2>写在二十岁的尾巴上</h2><p>昨天开始正式步入了『二十岁』这个区间的最后一个年头，但是特别忙，和京东来的人开会，去瓜子做贷后检查，然后五点回公司又帮同事check代码，晚上还开了个data的汇报会，回家躺沙发上居然就这么直接睡着了，想写点感想也没机会。...</p></div></article>
 </section>
 <div class="year-divider"><span>2019</span></div>
 <section class="row row-2col">
-<article class="card" onclick="openArticle('a6493CCD2')"><div class="card-body"><time>2019-11-16</time><h2>写在二十岁的尾巴上</h2><p>昨天开始正式步入了『二十岁』这个区间的最后一个年头，但是特别忙，和京东来的人开会，去瓜子做贷后检查，然后五点回公司又帮同事check代码，晚上还开了个data的汇报会，回家躺沙发上居然就这么直接睡着了，想写点感想也没机会。...</p></div></article>
 <article class="card" onclick="openArticle('a23AEE8D1')"><div class="card-body"><time>2019-07-15</time><h2>万寿菊，Aimyon，开黑三人组。</h2><p>1. 距离春节五月有余，终于又一次离开北京前往上海，为aimyon上海演唱会以及平安京三人组首次当面开黑。 上一次正经听演唱会是15年北京五棵松的Rie Fu,...</p></div></article>
+<article class="card" onclick="openArticle('a7FD476A0')"><div class="card-img"><img src="covers/7FD476A0_IMG_2443.PNG" alt=""></div><div class="card-body"><time>2019-06-29</time><h2>FRM出坑</h2><p>FRM终于出坑了。 从毕业开始断断续续看书、考试，每次都是没复习完就匆匆上考场被虐四个小时再下来，以后再也不像这样了…… 接下来是CFA和CPA。 以及还有一堆网课要刷呢。 #Writing/2019 #Writing/杂谈</p></div></article>
 </section>
-<section class="row row-featured" onclick="openArticle('a7FD476A0')"><div class="feat-cover"><img src="covers/7FD476A0_IMG_2443.PNG" alt=""><div class="feat-gradient" style="background:linear-gradient(to top,rgba(18,18,18,0.73) 0%,rgba(18,18,18,0.40) 30%,rgba(18,18,18,0.13) 60%,transparent 100%)"></div><div class="feat-text"><time>2019-06-29</time><h2 style="color:#fff">FRM出坑</h2><p style="color:rgba(255,255,255,.8)">FRM终于出坑了。 从毕业开始断断续续看书、考试，每次都是没复习完就匆匆上考场被虐四个小时再下来，以后再也不像这样了…… 接下来是CFA和CPA。 以及还有一堆网课要刷呢。 #Writing/2019 #Writing/杂谈</p></div></div></section>
+<section class="row row-featured" onclick="openArticle('a084ED902')"><div class="feat-cover"><img src="covers/084ED902_Notes_1458362066947.jpg" alt=""><div class="feat-gradient" style="background:linear-gradient(to top,rgba(18,18,18,0.45) 0%,rgba(18,18,18,0.25) 30%,rgba(18,18,18,0.08) 60%,transparent 100%)"></div><div class="feat-text"><time>2019-06-29</time><h2 style="color:#fff">记一场猫眼公开课</h2><p style="color:rgba(255,255,255,.8)">￼ ￼上周去参加了猫眼学院的公开课第一期，主讲是关雅荻。 作为一个从幼儿园到大学都生活在女生远多于男生（譬如文科班，财大，金融，etc.）的环境中的人，坐在这次公开课的观众群体第二排时的确有一些「熟稔」的感觉，氛围与气场让我更舒适和游刃有余，心态上的轻松感非常明显。...</p></div></div></section>
 <section class="row row-2col">
-<article class="card" onclick="openArticle('a084ED902')"><div class="card-img"><img src="covers/084ED902_Notes_1458362066947.jpg" alt=""></div><div class="card-body"><time>2019-06-29</time><h2>记一场猫眼公开课</h2><p>￼ ￼上周去参加了猫眼学院的公开课第一期，主讲是关雅荻。 作为一个从幼儿园到大学都生活在女生远多于男生（譬如文科班，财大，金融，etc.）的环境中的人，坐在这次公开课的观众群体第二排时的确有一些「熟稔」的感觉，氛围与气场让我更舒适和游刃有余，心态上的轻松感非常明显。...</p></div></article>
 <article class="card" onclick="openArticle('a180758CF')"><div class="card-img"><img src="covers/180758CF_a2xNODZRcS9WakJiVjE3VGNBWjg5RzBOV0ZQZis0NUdMOFJRdTQ1QW5lZXptTkZOUjBCbGRnPT0.png" alt=""></div><div class="card-body"><time>2019-06-28</time><h2>1997年过去了，我很怀念它。</h2><p>最近写博客的频率骤降，快要变成每月一次的节奏。 最近忙得兵荒马乱，昨天一边洗澡一边想，除了“兵荒马乱”这个已经被我用滥的词之外还有什么词语可以形容忙得一团糟的生活，答案是还真想不起来。 哎，毕竟不看小说好多年。...</p></div></article>
+<article class="card" onclick="openArticle('a999B5E94')"><div class="card-body"><time>2019-06-23</time><h2>Flappy bird，或者其他</h2><p class="card-subtitle">本文发表于2014年5月7日</p><p>mini2里只有一个游戏，就是flappy bird。 我不是那么无趣的一个人，这类单调枯燥的游戏一向是没啥耐心玩下去的。 但是这游戏火的时间很巧，刚好是一月，考研挂了滚回家混吃等死的寒假。每天去宇宙行累死累活应付各种大妈，下班回家已经累得饭也不想吃，就躺在床上望着天花板带着耳机单曲循环《东京》。...</p></div></article>
 </section>
 <section class="row row-2col">
-<article class="card" onclick="openArticle('a999B5E94')"><div class="card-body"><time>2019-06-23</time><h2>Flappy bird，或者其他</h2><p>本文发表于2014年5月7日 mini2里只有一个游戏，就是flappy bird。 我不是那么无趣的一个人，这类单调枯燥的游戏一向是没啥耐心玩下去的。...</p></div></article>
-<article class="card" onclick="openArticle('aC97E9049')"><div class="card-body"><time>2019-06-23</time><h2>Scream</h2><p>本文发表于2012年9月3日...</p></div></article>
-</section>
-<section class="row row-2col">
+<article class="card" onclick="openArticle('aC97E9049')"><div class="card-body"><time>2019-06-23</time><h2>Scream</h2><p class="card-subtitle">本文发表于2012年9月3日</p><p>和L微博上私信，从MPAcc扯到耽美文再扯到恶搞还珠，突然她冷不丁问我CPA二审过没，我才发现自己完全忘了这档子事。一时心急登录CICPA官网才发现自己似乎忘了注册ID，那瞬间心情就像被浸到冰窖里冰冷刺骨。颤抖抖的打开注册页面却发现自己的身份证和姓名已经注册了，但又不知道密码。于是对L调侃说，可能没机会考了。...</p></div></article>
 <article class="card" onclick="openArticle('aD1F4D66C')"><div class="card-body"><time>2019-06-23</time><h2>一半人生</h2><p>昨天的这个时候，大年三十，我还在北京海淀知春路中航广场的字节跳动矮楼二楼为头条的春节活动值班。大概一点过，忙得差不多，好不容易叫到一辆神州，趁师傅从二环开过来的空隙下楼抽了根烟。 大年三十的北京其实很冷清，看不到烟火，远处的高楼大概零星点亮了几户人家，然后就是死一般的寂静，烟头的火星在零下十度的寒风中摇曳。...</p></div></article>
-<article class="card" onclick="openArticle('aD4F2FA04')"><div class="card-img"><img src="covers/D4F2FA04_slow_soul_bg_1.jpg" alt=""></div><div class="card-body"><time>2019-06-23</time><h2>慢灵魂</h2><p>有一个大学玩得比较好的同学的小微信群，最近的讨论话题都围绕着买房、跳槽、生孩子。 很多事情做决定时总是有一大堆现实因素扯着你往地上拽，比如从SMU回成都的朋友L会因为男朋友和家庭父母原因而难以去自己想去的城市。...</p></div></article>
 </section>
+<section class="row row-featured" onclick="openArticle('aD4F2FA04')"><div class="feat-cover"><img src="covers/D4F2FA04_slow_soul_bg_1.jpg" alt=""><div class="feat-gradient" style="background:linear-gradient(to top,rgba(18,18,18,0.45) 0%,rgba(18,18,18,0.25) 30%,rgba(18,18,18,0.08) 60%,transparent 100%)"></div><div class="feat-text"><time>2019-06-23</time><h2 style="color:#fff">慢灵魂</h2><p class="feat-subtitle">终究会习惯，这种生活。</p><p style="color:rgba(255,255,255,.8)">有一个大学玩得比较好的同学的小微信群，最近的讨论话题都围绕着买房、跳槽、生孩子。 很多事情做决定时总是有一大堆现实因素扯着你往地上拽，比如从SMU回成都的朋友L会因为男朋友和家庭父母原因而难以去自己想去的城市。...</p></div></div></section>
 <section class="row row-2col">
-<article class="card" onclick="openArticle('aBEDFC21A')"><div class="card-body"><time>2019-06-23</time><h2>我说今晚月光那么美，你说是的。</h2><p>本文发表于2014–09-01 下班之前得知上周工作小组倒数TOP1，心里居然觉得“哦”就这么过去了。反正也是不喜欢的工作，你叫我怎么提得起兴趣去做。...</p></div></article>
+<article class="card" onclick="openArticle('aBEDFC21A')"><div class="card-body"><time>2019-06-23</time><h2>我说今晚月光那么美，你说是的。</h2><p class="card-subtitle">本文发表于2014–09-01</p><p>下班之前得知上周工作小组倒数TOP1，心里居然觉得“哦”就这么过去了。反正也是不喜欢的工作，你叫我怎么提得起兴趣去做。...</p></div></article>
 <article class="card" onclick="openArticle('a54F3BE1F')"><div class="card-body"><time>2019-06-23</time><h2>日常恐飞</h2><p>自从毕业以后，我飞的次数其实也不算少，但是还是常年恐飞，所以试过很多在飞机上缓解焦虑的方法： 听歌：通常一首歌4分钟，国内航线听30首歌就足够。不功不过。 看电影：不是一个好方法。其中最糟糕的体验是看了釜山行（封闭空间大逃杀）和星际穿越（涉及飞行器爆炸），整个人都不好了。搞不懂那些在途中看空中浩劫的人怎么想的……...</p></div></article>
 </section>
-<section class="row row-featured" onclick="openArticle('a675BEEB6')"><div class="feat-cover"><img src="covers/675BEEB6_6630239833443524700.jpg" alt=""><div class="feat-gradient" style="background:linear-gradient(to top,rgba(18,18,18,0.45) 0%,rgba(18,18,18,0.25) 30%,rgba(18,18,18,0.08) 60%,transparent 100%)"></div><div class="feat-text"><time>2019-06-23</time><h2 style="color:#fff">离回学校还有两天时间</h2><p style="color:rgba(255,255,255,.8)">本文发表于2012年9月3日 在ipad上下载了《ONE PIECE》漫画，准备一次性追完。虽说是三大民工漫之首，但质量的确不错。其实是想让自己爱上了海贼王之后又能在“喜欢”这一范围内新增一系列海贼相关的周边，不追点漫画心里不是很自在的感觉。...</p></div></div></section>
+<article class="row row-full" onclick="openArticle('a675BEEB6')"><div class="full-body"><time>2019-06-23</time><h2>离回学校还有两天时间</h2><p class="card-subtitle">本文发表于2012年9月3日</p><p>本文发表于2012年9月3日 在ipad上下载了《ONE PIECE》漫画，准备一次性追完。虽说是三大民工漫之首，但质量的确不错。其实是想让自己爱上了海贼王之后又能在“喜欢”这一范围内新增一系列海贼相关的周边，不追点漫画心里不是很自在的感觉。...</p></div></article>
 </div>
       <div class="section-content" id="section-academic"><div class="year-divider"><span>2025</span></div>
 <section class="row row-2col">
@@ -239,10 +245,61 @@
 <img src="gallery/Tokyo 2025 Spring/E23F2799-C182-4C86-9F2D-4EDFD1CF0E94_1_105_c.jpeg" alt="" loading="lazy" onclick="openLightbox(11)"></div>
     </div>
       </div>
+      <div class="section-content" id="section-about"><article class="prose about-prose"><blockquote>
+千の夜をこえて<br>
+今あなたに会いに行こう<br>
+伝えなきゃならないことがある<br>
+</blockquote>
+<p>我是HeYan，男，四川土著，<s>帅且可爱</s>，🌈。理性，INTP，热爱科学，并且有点宅。会弹琴，常听J-Rock, J-Pop, Folks, Original Soundtrack。喜欢 <a href="http://ikimonogakari.com/" target="_blank" rel="noopener">いきものがかり</a> (生物股长)，<a href="http://www.aimyong.net/" target="_blank" rel="noopener">Aimyon</a> ，<a href="https://weibo.com/cypmusicstudio" target="_blank" rel="noopener">陈致逸</a> 。现在常住在北京。</p>
+<p>现在在tiktok-platform responsibility部门摸鱼。在此之前，我在字节跳动-生活服务的平台治理（base成都）打工。</p>
+<p>在重新回到字节前，就职于美团保险，并负责一个小的两核策略团队。更早一些时候，在<a href="https://www.bytedance.com/zh/" target="_blank" rel="noopener">字节跳动</a>有过两段工作履历，负责建立了抖音支付最早期的风险管理体系以及做过一段时间的贷前信用策略，并且交到了几个很好的朋友。<strong>当时的字节跳动带给了我迄今为止的工作经历中最棒的体验</strong>。在此期间有过短暂的银行风险经理的工作。在加入字节跳动之前，在美团支付团队负责支付风险管理。最早的时候，在<a href="https://www.antgroup.com/" target="_blank" rel="noopener">支付宝</a>做支付方向的风控，那是毕业之后的第一份工作。</p>
+<p>在工作之前，我在四川成都的<a href="https://www.swufe.edu.cn/" target="_blank" rel="noopener">西南财经大学</a>度过了四年本科生活，我很喜欢成都这座城市，并且在成都买了一套贷款三十年的房子（<s>虽然迄今为止入住的时间总和不超过一个月，计算ROI是一笔非常失败的投资</s>）。现在房贷已经基本还完啦。</p>
+<p>想读PhD拖了十年的重度拖延症患者，但我相信时间会在三十五岁之前给我一个答案。感兴趣的领域包括宏观金融、资本市场、机器学习与统计。在此之外也对编曲与作曲抱有极大的兴趣。</p>
+<p>有一只叫做何包蛋的五岁美国短毛猫，一只叫做香蕉的六岁柴犬，以及一个男朋友，他在游戏行业从事数据分析工作。我们都希望能够环游世界。</p>
+<h3>关于专业与兴趣</h3>
+<h4>MITx Micromasters Statistics and Data Science</h4>
+<ul>
+<li>6.431x Probability - The Science of Uncertainty and Data ✅</li>
+<li>18.6501x Fundamentals of Statistics ✅</li>
+<li>6.86x Machine Learning with Python-From Linear Models to Deep Learning ✅</li>
+<li>6.419x Data Analysis: Statistical Modeling and Computation in Applications (ongoing)</li>
+</ul>
+<h4>Finance & Risk Management</h4>
+<ul>
+<li><a href="http://my.garp.org/DigitalBadgeFRM?id=0034000001aeWr3AAE" target="_blank" rel="noopener">FRM 金融风险管理师 持证人</a></li>
+<li>CFA 永久性弃坑</li>
+<li>CICPA 永久性弃坑</li>
+</ul>
+<h4>Coursera</h4>
+<ul>
+<li><a href="https://www.coursera.org/specializations/jhu-data-science" target="_blank" rel="noopener">Data Science Specialization 数据科学专项认证，约翰霍普金斯大学</a>- R Programming, Practical Machine Learning, Statistical Inference, Exploratory Data Analysis, etc.</li>
+<li><a href="https://www.coursera.org/account/accomplishments/verify/CL8NUCSTDAJT" target="_blank" rel="noopener">Measuring Causal Effects in the Social Sciences, 哥本哈根大学</a></li>
+</ul>
+<h4>Udacity</h4>
+<ul>
+<li><a href="https://graduation.udacity.com/confirm/A4TCQYGQ" target="_blank" rel="noopener">Deep Learning NanoDgree 深度学习</a></li>
+</ul>
+<p>⠀</p>
+<h3>迄今为止的人生路径</h3>
+<ul>
+<li>2025-now  TikTok - Platform Responsibility, Beijing</li>
+<li>2024 - 2025 字节跳动 - 本地生活-平台治理与体验，成都</li>
+<li>2021 - 2024 美团点评 - 保险平台部，北京</li>
+<li>2020 - 2021 字节跳动 - 财经业务部，北京</li>
+<li>2019 - 2020 蓝海银行 - 零售信贷风险管理部，北京（并不是很喜欢这段经历）</li>
+<li>2018 - 2019 字节跳动 - 财经业务部，北京</li>
+<li>2015 - 2018 美团点评 - 技术工程部/支付平台部，北京</li>
+<li>2014 - 2015 支付宝 - 国内风险管理部，杭州</li>
+<li>2010 - 2014 西南财经大学，成都</li>
+</ul>
+<h3>关于签名</h3>
+<p>第一段来自<a href="https://zh.wikipedia.org/wiki/Aqua_Timez" target="_blank" rel="noopener">Aqua Timez</a>的<a href="https://music.douban.com/subject/1926414/" target="_blank" rel="noopener">千の夜をこえて</a>, 2010年左右最喜欢的日文歌。这个乐队在2018年正式解散。</p>
+<p>#Writing/About</p></article></div>
     </div>
 
-    <div class="article-page" id="a13EE4C51" data-cover="covers/13EE4C51_kevin-luo-Pasy40R2ryE-unsplash.jpg"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2026-05-12</time><h1>生活是不确定性的。</h1></header><p>Let's face it - Life is uncertain</p>
-<blockquote>周报这个题材是学的https://www.pseudoyu.com/posts 的博客风格，但人家能保持每两周写一篇，我还是算了吧:)</blockquote>
+    <div class="article-page" id="a13EE4C51" data-cover="covers/13EE4C51_kevin-luo-Pasy40R2ryE-unsplash.jpg" data-subtitle="Let's face it - Life is uncertain"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2026-05-12</time><h1>生活是不确定性的。</h1></header><blockquote>
+周报这个题材是学的https://www.pseudoyu.com/posts 的博客风格，但人家能保持每两周写一篇，我还是算了吧:)<br>
+</blockquote>
 <p>在经历了三个月6.431x和18.6501的摧残后，今天难得的拥有了一个自由的周末写写久违的博客，虽然个人域名又忘了续费。</p>
 <p>从5月到8月，这三个月几乎所有的周末和工作日闲暇时间都献给了这两门课，我果然还是too young too simple sometimes naive，天真的以为『老子概率统计学得很好啊这不是随便刷吗』。概率那门课还好，但统计确实恼火，在知乎上看参与了MIT这个项目课程制作的一个博士说18.6501原型是数学系的课，怪不得充斥着大量的证明和渐进理论。好处是上完课之后再看一些论文里涉及到概率统计相关的公式和理论就觉得so easy啦。</p>
 <p>这三个月的重心都放在了上课上面，但工作过于繁忙（瞎忙），以至于出差的时候全程都带着ipad mini。在两舱休息室做题，在公务舱看lecture和拿着A4草稿纸算题，空姐大概会以为我是个赶作业DDL的大学生吧，笑。</p>
@@ -310,14 +367,18 @@
 <p>24年进电影院的次数也屈指可数。</p>
 <p>当年新上映的新电影里，「朱同在三年级丢失了超能力」是相对更喜欢的一部，除此之外「从21世纪安全撤离」也还不错，但应该没什么二刷的冲动。</p>
 <p>如果抛开「新上映」这一限制，24年最喜欢的是「宇宙探索编辑部」，这也是一部人人都觉得我一定会第一时间看但我居然硬生生拖了三年才开始看的电影。在这里直接引用我在豆瓣上留的短评吧：</p>
-<blockquote>拖了很久终于把这部电影看了。除了故事大部分剧情发生在我的家乡以至于带来了一些陌生的熟悉感之外，其他时候我总是会想起小时候看的科幻世界，想买而家长一直不肯买的天文望远镜，以及曾经想过的，「朝闻道」里也提过的问题，宇宙的意义是什么。大概是一个中年社畜不会再去深入思考的问题吧，笑。</blockquote>
+<blockquote>
+拖了很久终于把这部电影看了。除了故事大部分剧情发生在我的家乡以至于带来了一些陌生的熟悉感之外，其他时候我总是会想起小时候看的科幻世界，想买而家长一直不肯买的天文望远镜，以及曾经想过的，「朝闻道」里也提过的问题，宇宙的意义是什么。大概是一个中年社畜不会再去深入思考的问题吧，笑。<br>
+</blockquote>
 <p>其次是「花束般的恋爱」，感触太多以至于不知道怎么写短评。</p>
 <h4>总结：6.0/10</h4>
 <p>2024年过去了，这是乏善可陈的一年，年度盘点也只需要花一个晚上的时间就可以匆匆总结。如果一定要用一个量化的指标来打个分，我可能会给到6分：及格。给到一个及格分数，是因为这一年肉眼可见地做出了改变：<strong>离开北京，回到成都</strong>。下半年虽然过得比较混乱，但这也许是从一种生活状态中脱离，尚未准备好进入另一种生活状态的过渡阵痛。</p>
 <p>可能接下来会再写一个2025年的计划。拖24年时不时思考的福，25年的计划，大概不会再像24年一样，是一个不合格的OKR了吧，笑。</p>
 <p>#Writing</p></article></div>
-<div class="article-page" id="a6776F028" data-cover="covers/6776F028_asakusa.jpg"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2025-01-25</time><h1>Lost in Tokyo 04</h1></header><h3>Lost in Tokyo 04> 纪念2025.01.01 - 01.05 的五天四夜东京之旅。</h3>
-<blockquote>很遗憾一次性并不能全部写完。</blockquote>
+<div class="article-page" id="a6776F028" data-cover="covers/6776F028_asakusa.jpg" data-subtitle="迷失东京04：浅草寺、庙会与更多的未完待续"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2025-01-25</time><h1>Lost in Tokyo 04</h1></header><blockquote>
+纪念2025.01.01 - 01.05 的五天四夜东京之旅。<br>
+很遗憾一次性并不能全部写完。<br>
+</blockquote>
 <h3>Day4: 浅草寺与庙会</h3>
 <p>第四天天气又恢复了晴朗。 这一天主要是在浅草寺和逛庙会。</p>
 <p>雷门，全是人。</p>
@@ -363,8 +424,10 @@
 <li>带相机在很多场合还是比手机拍照要更好的。</li>
 </ul>
 <p>#Writing</p></article></div>
-<div class="article-page" id="a1EC109B6" data-cover="covers/1EC109B6_utokyo.jpg"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2025-01-24</time><h1>Lost in Tokyo 03</h1></header><h3>Lost in Tokyo 03> 纪念2025.01.01 - 01.05 的五天四夜东京之旅。</h3>
-<blockquote>很遗憾一次性并不能全部写完。</blockquote>
+<div class="article-page" id="a1EC109B6" data-cover="covers/1EC109B6_utokyo.jpg" data-subtitle="迷失东京03：科学与艺术"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2025-01-24</time><h1>Lost in Tokyo 03</h1></header><blockquote>
+纪念2025.01.01 - 01.05 的五天四夜东京之旅。<br>
+很遗憾一次性并不能全部写完。<br>
+</blockquote>
 <h3>Day 3: 科学与艺术</h3>
 <p>到日本的前两天天气都很好，以至于我们有一种“沿海城市可能每天都是蓝天白云吧”的错觉。第三天就给了当头一棒，早上起床拉开窗帘就发现是个阴天。</p>
 <p>第三天主要去了东京大学和东京国立博物馆，因为天气的缘故，照片也没有拍很多。</p>
@@ -413,8 +476,10 @@
 <p>骑车时耳机里随机听着歌。很巧合的是那些歌曲从我近几年爱听的新歌一路回溯往前，就像思绪在北京夏夜晚风中被一路裹挟着逆流而上。想起了和昊哥在罗庄西里一起度过的新冠时期的爱情，想起了在回龙观和成龙一起每天下班后骑着单车沿着东大街西大街来回穿巡，想起了在财大东门空无一人的半夜三更漫步，想起了高考结束后和朋友们通宵KTV。想起了我也曾经想拥有自由而快乐的一生。</p>
 <p>几天前离开北京的时候过于匆忙，以至于今晚短暂的心血来潮让我在快乐的骑行中渐渐意识到，原来这才是一次真正意义上的，突如其来的道别。</p>
 <p>#Writing</p></article></div>
-<div class="article-page" id="a625D3083" data-cover="covers/625D3083_odaiba.jpeg"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2025-01-20</time><h1>Lost in Tkoyo 02</h1></header><h3>Lost in Tkoyo 02> 纪念2025.01.01 - 01.05 的五天四夜东京之旅。</h3>
-<blockquote>很遗憾一次性并不能全部写完。</blockquote>
+<div class="article-page" id="a625D3083" data-cover="covers/625D3083_odaiba.jpeg" data-subtitle="迷失东京02：御台场纪念日"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2025-01-20</time><h1>Lost in Tkoyo 02</h1></header><blockquote>
+纪念2025.01.01 - 01.05 的五天四夜东京之旅。<br>
+很遗憾一次性并不能全部写完。<br>
+</blockquote>
 <h3>迷失东京02：御台场纪念日</h3>
 <p>国内一般把<strong>**お台場</strong>**翻译成「御台场」，主要是受到数码兽大冒险第一部（digimon adventure 01，以下简称DA）的台版音译，お在日语里的一个用法是表示对对方的尊敬，所以翻译为「御」。实际上日常里一般就直接叫成「台场」。</p>
 <p>御台场是数码兽大冒险在现实世界里的故事主要发生场景，而DA的制作方富士电视台使用了台场大量的实地景点（甚至贡献了自家电视台的大球供战斗暴龙兽去打怨毒吸血魔兽……）。在DA02里，「御台场纪念日」成为了动漫里的一个专有名词，纪念现实世界的这一段经历。</p>
@@ -469,8 +534,10 @@
 <p><strong>### 总结</strong></p>
 <p>台场的风光可以让我坐一上午。池袋也不是传闻中的全是中国人。鳗鱼饭真好吃啊(￣▽￣)"</p>
 <p>#Writing</p></article></div>
-<div class="article-page" id="a3C352D0A" data-cover="covers/3C352D0A_shibuya.jpg"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2025-01-19</time><h1>Lost in Tkoyo 01</h1></header><h3>Lost in Tkoyo 01> 纪念2025.01.01 - 01.05 的五天四夜东京之旅。</h3>
-<blockquote>很遗憾一次性并不能全部写完。</blockquote>
+<div class="article-page" id="a3C352D0A" data-cover="covers/3C352D0A_shibuya.jpg" data-subtitle="迷失东京01：东京塔的夜景、爱宕神社与涉谷"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2025-01-19</time><h1>Lost in Tkoyo 01</h1></header><h3>Lost in Tkoyo 01> 纪念2025.01.01 - 01.05 的五天四夜东京之旅。</h3>
+<blockquote>
+很遗憾一次性并不能全部写完。<br>
+</blockquote>
 <h4>关于这次旅行</h4>
 <p>很难想象作为一个将日本流行文化作为超过一半的娱乐生活的人居然没有去过东京，上次和朋友聊到的时候，对方也很吃惊。我将其总结为一种『近乡情怯』的微妙情感：了解得越多、越想准备好、越准备不好的恶性循环。</p>
 <p>2024年换工作回字节、回成都之后，还是能感觉到比在美团忙碌很多，以至于24年一整年都没怎么旅行，遑论出国。老张作为一个爱旅行的人，在24年底的时候订了元旦五天四夜的东京之旅，我咬牙元旦节请了两天假，顺利出行。</p>
@@ -498,19 +565,25 @@
 <h4>未完待续</h4>
 <p>作为强迫症患者，想把游记写得面面俱到事无巨细，而这对一个INTP&完美主义者来说是一件异常痛苦的事情。过去也去了很多地方，回来后总是在脑子里开始打草稿，但想得越多越难以下笔，最后拖延着拖延着也就像时间一样流逝过去了。上一篇博客是2023年4月，在这一年半中，其实发生了很多人生大事。例如23年沿着丝绸之路的轨迹去了银川、敦煌、喀什、乌鲁木齐，跳槽回了字节生活服务然而发现这只是一个美团plus, 从工作生活了整整九年的北京举家搬迁回了成都，办好了日韩五年签并且第一次去了大阪，还完了房贷然而又想着换一套更好的房子，头发越掉越少:(</p>
 <p>神经细胞无法再生，记忆也并不像想象中那么牢靠，最终还是需要记录到互联网的某个地方，可以让自己在未来的某一天重新翻开，重温当时瞬间的快乐。所以我能想到的一个缓释措施就是将一个大而全的文章拆成一段段独立的博客来写，就像这次的东京之旅一样。</p>
-<blockquote>デイバイデイ</blockquote>
-<blockquote>どんなスピードで 追いかけたら</blockquote>
-<blockquote>また君と 巡り逢えるだろう</blockquote>
-<blockquote>寄り添った日々 生きている意味</blockquote>
-<blockquote>くれたのは君 なんだよ</blockquote>
+<blockquote>
+デイバイデイ<br>
+どんなスピードで 追いかけたら<br>
+また君と 巡り逢えるだろう<br>
+寄り添った日々 生きている意味<br>
+くれたのは君 なんだよ<br>
+</blockquote>
 <p>></p>
-<blockquote>日复一日</blockquote>
-<blockquote>该用多快的速度追赶才好</blockquote>
-<blockquote>才能与你再次辗转相遇</blockquote>
-<blockquote>相依相伴的日子 活下去的意义</blockquote>
-<blockquote>将这些给我的都是你啊</blockquote>
+<blockquote>
+日复一日<br>
+该用多快的速度追赶才好<br>
+才能与你再次辗转相遇<br>
+相依相伴的日子 活下去的意义<br>
+将这些给我的都是你啊<br>
+</blockquote>
 <p>#Writing</p></article></div>
-<div class="article-page" id="a92B7296C" data-cover="covers/92B7296C_BC0B9336-7354-4C58-B408-03ADF5876232_1_105_c.jpeg"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2023-02-26</time><h1>乏善可陈的二月</h1></header><blockquote>这是一篇久违了四年的博客。</blockquote>
+<div class="article-page" id="a92B7296C" data-cover="covers/92B7296C_BC0B9336-7354-4C58-B408-03ADF5876232_1_105_c.jpeg" data-subtitle="这是一篇久违了四年的博客。"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2023-02-26</time><h1>乏善可陈的二月</h1></header><blockquote>
+这是一篇久违了四年的博客。<br>
+</blockquote>
 <p>这几年很少对外表达，包括博客、微博、朋友圈。一方面自我感觉没什么实质上的收获和可以对外分享的东西，另一方面大概也是对自己的生活并不是特别满意。另外，在自建的博客上发表一篇完整的文章苏需要的工序还蛮多的，这种形式感会不自觉地对内容的规整性有要求，所以往往刚起了一个念头就半途而废。</p>
 <p>总之，憋了半天，今天终于憋出来一篇。</p>
 <h4>关于旅行</h4>
@@ -547,13 +620,7 @@
 <p>北京的冬天很难让人喜欢待在室外，有种人生被偷走了一半的失落感。</p>
 <p>所以春天啊，快来吧。</p>
 <p>#Writing/2023</p></article></div>
-<div class="article-page" id="a54609B40"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2022-09-18</time><h1>About Me（历史归档）</h1></header><p>男，四川土著，~~帅且可爱~~。 不吐槽会死星人。理性，毒舌，孤僻，宅。 会弹琴，常听J-Rock, J-Pop, Folks, Original Soundtrack。喜欢 <a href="http://ikimonogakari.com/" target="_blank" rel="noopener">いきものがかり</a> (生物股长),  <a href="http://www.aimyong.net/" target="_blank" rel="noopener">Aimyon</a> ,  <a href="http://www.mrchildren.jp/" target="_blank" rel="noopener">Mr.Children</a> , 宋冬野， <a href="https://weibo.com/cypmusicstudio" target="_blank" rel="noopener">陈致逸</a> 。 专业是金融，毕业之后做了几年支付、信贷风险策略，误打误撞进了保险行业做策略。 常混迹于北京各大互联网公司的金融事业部。 朝阳区惠新西街群众。 想读PhD拖了八年的重度拖延症患者。</p>
-<p>#Writing</p></article></div>
-<div class="article-page" id="a86ED7855"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2022-09-15</time><h1>About Me V1.1</h1></header><p>我是HeYan，男，四川土著，~~帅且可爱~~，🌈。理性，INTP，热爱科学，并且有点宅。会弹琴，常听J-Rock, J-Pop, Folks, Original Soundtrack。喜欢 <a href="http://ikimonogakari.com/" target="_blank" rel="noopener">いきものがかり</a> (生物股长)，<a href="http://www.aimyong.net/" target="_blank" rel="noopener">Aimyon</a> ，<a href="https://weibo.com/cypmusicstudio" target="_blank" rel="noopener">陈致逸</a> 。现在常住在北京。</p>
-<p>现在就职于美团保险，并负责一个小的两核策略团队。在回到美团之前，我在<a href="https://www.bytedance.com/zh/" target="_blank" rel="noopener">字节跳动</a>有过两段工作履历，负责建立了抖音支付最早期的风险管理体系以及做过一段时间的贷前信用策略，并且交到了几个很好的朋友。<strong>字节跳动带给了我迄今为止的工作经历中最棒的体验</strong>。在此期间有过短暂的银行风险经理的工作。在加入字节跳动之前，在美团支付团队负责支付风险管理。更早的时候，在<a href="https://www.antgroup.com/" target="_blank" rel="noopener">支付宝</a>做支付方向的风控，那是毕业之后的第一份工作。</p>
-<p>在工作之前，我在四川成都的<a href="https://www.swufe.edu.cn/" target="_blank" rel="noopener">西南财经大学</a>度过了四年本科生活，我很喜欢成都这座城市，所以在成都买了一套贷款三十年的房子（~~虽然迄今为止入住的时间总和不超过一个月，计算ROI是一笔非常失败的投资~~）。</p>
-<p>想读PhD拖了八年的重度拖延症患者，但我相信时间会在三十五岁之前给我一个答案。感兴趣的领域包括宏观金融、资本市场、机器学习与统计。在此之外也对编曲与作曲抱有极大的兴趣。</p>
-<p>有一只叫做何包蛋的三岁美国短毛猫，一只叫做香蕉的四岁柴犬，以及一个男朋友，他在游戏行业从事数据分析工作。我们都希望能够环游世界。</p>
+<div class="article-page" id="a54609B40"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2022-09-18</time><h1>About Me（历史归档）</h1></header><p>男，四川土著，<s>帅且可爱</s>。 不吐槽会死星人。理性，毒舌，孤僻，宅。 会弹琴，常听J-Rock, J-Pop, Folks, Original Soundtrack。喜欢 <a href="http://ikimonogakari.com/" target="_blank" rel="noopener">いきものがかり</a> (生物股长),  <a href="http://www.aimyong.net/" target="_blank" rel="noopener">Aimyon</a> ,  <a href="http://www.mrchildren.jp/" target="_blank" rel="noopener">Mr.Children</a> , 宋冬野， <a href="https://weibo.com/cypmusicstudio" target="_blank" rel="noopener">陈致逸</a> 。 专业是金融，毕业之后做了几年支付、信贷风险策略，误打误撞进了保险行业做策略。 常混迹于北京各大互联网公司的金融事业部。 朝阳区惠新西街群众。 想读PhD拖了八年的重度拖延症患者。</p>
 <p>#Writing</p></article></div>
 <div class="article-page" id="a6493CCD2"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2019-11-16</time><h1>写在二十岁的尾巴上</h1></header><p>昨天开始正式步入了『二十岁』这个区间的最后一个年头，但是特别忙，和京东来的人开会，去瓜子做贷后检查，然后五点回公司又帮同事check代码，晚上还开了个data的汇报会，回家躺沙发上居然就这么直接睡着了，想写点感想也没机会。</p>
 <p>我常常在想自己的这二十多年过得还是蛮有意思的。驱魔少年钢炼凉宫夏日大作战fate周杰伦蔡依林SHE生物股长Mr.Children&aimyon生活大爆炸西部世界还有一大堆数不清人类科技娱乐和艺术的结晶，都在不同的时间和空间下构成了我的性格和回忆的一部分。</p>
@@ -583,14 +650,16 @@
 <p>必然是基佬！</p>
 <p>Aimyon登场第一首就是《不听摇滚的你》，当场就差点吼出来了，可惜这首不太会唱，只会副歌那几句，尴尬- -</p>
 <p>基本把新专辑的歌都唱完了，然后九点谢幕，又在大家encore里返场，响起《marigold》的前奏。这时候第一排的一个小哥站起来对后面所有人招手，让大家都起来，会唱的不会唱的都在跟着</p>
-<blockquote>麦わらの帽子の君が</blockquote>
-<blockquote>戴着麦秸帽子的你</blockquote>
-<blockquote>揺れたマリーゴールドに似てる</blockquote>
-<blockquote>仿若摇曳的万寿菊般</blockquote>
-<blockquote>あれは空がまだ青い夏のこと</blockquote>
-<blockquote>那是天空蔚蓝的夏日</blockquote>
-<blockquote>懐かしいと笑えたあの日の恋</blockquote>
-<blockquote>令人怀念的、开怀的那日的热恋</blockquote>
+<blockquote>
+麦わらの帽子の君が<br>
+戴着麦秸帽子的你<br>
+揺れたマリーゴールドに似てる<br>
+仿若摇曳的万寿菊般<br>
+あれは空がまだ青い夏のこと<br>
+那是天空蔚蓝的夏日<br>
+懐かしいと笑えたあの日の恋<br>
+令人怀念的、开怀的那日的热恋<br>
+</blockquote>
 <p>真是令人怀念的，开怀的，上海之行啊。</p>
 <p>5.</p>
 <p>接下来三天都是在师兄家，在酒店里，我们三个人一起开黑，每晚打到两点钟，但是我好想还是得业生…</p>
@@ -632,7 +701,9 @@
 <p>不得不说这是一次比较成功的聚会，虽然所有同事都是第一次见，但聊天过程却意外熟悉，大概是有种大学同学身上的味道。精酿啤酒逼格虽然略高，但后半程大家还是喝成了像路边摊普通啤酒一样玩游戏输了的人罚一杯。</p>
 <p>所以这个时候突然对公司的印象好了不少，毕竟之前和同部门同事一直不在一个聊天的层面上，估计真是进错了部门吧哈哈。</p>
 <p>和朋友讨论《我不是潘金莲》的时候起了些争执，我从1942之后就再也不看冯小刚的电影，对他的人品颇有微词，而朋友相反。说着说着，突然想起一句台词：</p>
-<blockquote>1997年过去了,我很怀念它。</blockquote>
+<blockquote>
+1997年过去了,我很怀念它。<br>
+</blockquote>
 <p>这句词出自冯小刚1997年末的贺岁电影《甲方乙方》的最后一句。当想起这句台词的时候，突然有一种巨大的，排山倒海的东西迎面扑来，毫无抵抗力。</p>
 <p>然后就莫名其妙湿了眼眶。</p>
 <p>我这该死的多愁善感啊。</p>
@@ -641,36 +712,47 @@
 <p>葛优和刘蓓坐的公交车背后写的标语是，“学习李素丽”。李素丽出现在我的中学政治课本的阅读材料里，模范公交车售票员。而十九年后，公交车已经基本实现了无人售票，北京城里还能见到售票员的话，更多是为解决本地人口就业而设的福利性岗位。</p>
 <p>正如常常向朋友感叹的，这个时代发展太快，我总有种跟不上的乏力感。</p>
 <p>电影最出名的画面应该是最后一幕，除夕夜，大红灯笼高高挂，镜头最远处是杨立新落寞的背影和色调陡然转冷的下雪天。然后葛优低沉的声音响起。</p>
-<blockquote>那天我们都喝醉了，也都哭了</blockquote>
-<blockquote>互相说了许多肝胆相照的话，真是难忘的一夜</blockquote>
+<blockquote>
+那天我们都喝醉了，也都哭了<br>
+互相说了许多肝胆相照的话，真是难忘的一夜<br>
+</blockquote>
 <p>></p>
-<blockquote>几天后我和北燕正式举行了婚礼</blockquote>
-<blockquote>她的父母单独跟我谈了一次话，问我是否隐瞒了年龄</blockquote>
-<blockquote>我告诉他们，我从一出生，就比一般的孩子老。</blockquote>
+<blockquote>
+几天后我和北燕正式举行了婚礼<br>
+她的父母单独跟我谈了一次话，问我是否隐瞒了年龄<br>
+我告诉他们，我从一出生，就比一般的孩子老。<br>
+</blockquote>
 <p>></p>
-<blockquote>1997年过去了。我很怀念它。</blockquote>
+<blockquote>
+1997年过去了。我很怀念它。<br>
+</blockquote>
 <p>其实1997年已经过去了好久好久，我也不知道我在怀念什么。</p>
 <p>北京今晚开始下雪，又是一个轮回，2016仅剩一个多月，在北国的暖气里，怀念1997年。</p>
-<blockquote>借我十年</blockquote>
-<blockquote>借我亡命天涯的勇敢</blockquote>
-<blockquote>借我说得出口的旦旦誓言</blockquote>
-<blockquote>借我孤绝如初见</blockquote>
+<blockquote>
+借我十年<br>
+借我亡命天涯的勇敢<br>
+借我说得出口的旦旦誓言<br>
+借我孤绝如初见<br>
+</blockquote>
 <p>></p>
 <p>></p>
-<blockquote>借我不惧碾压的鲜活</blockquote>
-<blockquote>借我生猛与莽撞不问明天</blockquote>
-<blockquote>借我一束光照亮黯淡</blockquote>
-<blockquote>借我笑颜灿烂如春天</blockquote>
+<blockquote>
+借我不惧碾压的鲜活<br>
+借我生猛与莽撞不问明天<br>
+借我一束光照亮黯淡<br>
+借我笑颜灿烂如春天<br>
+</blockquote>
 <p>></p>
 <p>></p>
 <p>></p>
-<blockquote>借我杀死庸碌的情怀</blockquote>
-<blockquote>借我纵容的悲怆与哭喊</blockquote>
-<blockquote>借我怦然心动如往昔</blockquote>
-<blockquote>借我安适的清晨与傍晚</blockquote>
+<blockquote>
+借我杀死庸碌的情怀<br>
+借我纵容的悲怆与哭喊<br>
+借我怦然心动如往昔<br>
+借我安适的清晨与傍晚<br>
+</blockquote>
 <p>#Writing</p></article></div>
-<div class="article-page" id="a999B5E94"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2019-06-23</time><h1>Flappy bird，或者其他</h1></header><blockquote>本文发表于2014年5月7日</blockquote>
-<p>mini2里只有一个游戏，就是flappy bird。</p>
+<div class="article-page" id="a999B5E94" data-subtitle="本文发表于2014年5月7日"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2019-06-23</time><h1>Flappy bird，或者其他</h1></header><p>mini2里只有一个游戏，就是flappy bird。</p>
 <p>我不是那么无趣的一个人，这类单调枯燥的游戏一向是没啥耐心玩下去的。</p>
 <p>但是这游戏火的时间很巧，刚好是一月，考研挂了滚回家混吃等死的寒假。每天去宇宙行累死累活应付各种大妈，下班回家已经累得饭也不想吃，就躺在床上望着天花板带着耳机单曲循环《东京》。</p>
 <p>那时候大概是觉得自己真是一个啥事儿都做不好的loser。</p>
@@ -684,8 +766,7 @@
 <p>后来又流行了很多游戏，2048什么的，都没去玩。</p>
 <p>夜深人静的时候，偶尔想起这只死了千百次的黄色笨鸟，还有点小感激呢。</p>
 <p>#Writing #Writing</p></article></div>
-<div class="article-page" id="aC97E9049"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2019-06-23</time><h1>Scream</h1></header><blockquote>本文发表于2012年9月3日</blockquote>
-<p>和L微博上私信，从MPAcc扯到耽美文再扯到恶搞还珠，突然她冷不丁问我CPA二审过没，我才发现自己完全忘了这档子事。一时心急登录CICPA官网才发现自己似乎忘了注册ID，那瞬间心情就像被浸到冰窖里冰冷刺骨。颤抖抖的打开注册页面却发现自己的身份证和姓名已经注册了，但又不知道密码。于是对L调侃说，可能没机会考了。</p>
+<div class="article-page" id="aC97E9049" data-subtitle="本文发表于2012年9月3日"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2019-06-23</time><h1>Scream</h1></header><p>和L微博上私信，从MPAcc扯到耽美文再扯到恶搞还珠，突然她冷不丁问我CPA二审过没，我才发现自己完全忘了这档子事。一时心急登录CICPA官网才发现自己似乎忘了注册ID，那瞬间心情就像被浸到冰窖里冰冷刺骨。颤抖抖的打开注册页面却发现自己的身份证和姓名已经注册了，但又不知道密码。于是对L调侃说，可能没机会考了。</p>
 <p>说那句话时的心情其实是带有一些窃喜的，反正自己知道自己没有复习完，但囿于面子又不好在别人面前说真心话。要是能有这样一个借口可以体体面面不去参加考试倒也不错，只是可惜了那么多报名费资料费和东奥的课程费。</p>
 <p>不知道从什么时候开始给别人留下自己貌似很NB的印象，大概也有自己某些时候刻意装逼的原因。这叫自作孽不可活，其实自己几斤几两倒也心知肚明，周围人大概是什么水平也能摸个八九不离十。别人觉得自己很NB的一个后果就是，每次抱怨复习不完或者看不完的时候，总会感觉一阵被嘲笑的阴森感。</p>
 <p>也不是不想像一众牛人一样把学习工作和生活安排的井井有条互不相干，也不是不想通读金融领域所有经典，也不是不想认真做一次挑战杯或者数模，也不是不想亲自操作股市期货和外汇，但自己其实从来就没有办到过。其实我就是一个很普通的SWUFE 金融系即将大三的学生而已。</p>
@@ -693,7 +774,9 @@
 <p>说起来自己是一个不相信奇迹却又寄希望于奇迹的人，一个月能复习完两科？我倒没报那么大希望。但正如昨天说的，事在人为，尽力吧。虽然自己从来就没那个毅力不玩手机不听歌不分心认认真真看书的能力，摊手，叹气。</p>
 <p>下午醒来的时候阳光很好，用ipad刷微博看到一个很文艺的小男生，大概才高二的样子。那叫真文艺，我是伪文青。私以为真正的文艺青年会让人感觉自然舒服，就像充满了阳光香味的窗台一样。拉不下老脸去关注一个小孩子，于是更不要脸的用了偷偷关注功能。咳咳。</p>
 <p>看财务报告一章的时候仍不能免俗的戴着耳机听歌，张悬的第一张专辑《My life will…》，<Scream>。一方面为了自己可怜的复习进度而唉声叹气，一方面为了下午温暖的阳光而欣喜不已。于是继续把希望寄托于明天，正如过去的两个月一样。</p>
-<blockquote>I’m trying to be perfect someday， But till now it’s still in vain 。</blockquote>
+<blockquote>
+I’m trying to be perfect someday， But till now it’s still in vain 。<br>
+</blockquote>
 <p>#Writing/杂谈 #Writing/2012  #Writing/CPA #Writing/神经质 #Writing/暑假</p></article></div>
 <div class="article-page" id="aD1F4D66C"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2019-06-23</time><h1>一半人生</h1></header><p>昨天的这个时候，大年三十，我还在北京海淀知春路中航广场的字节跳动矮楼二楼为头条的春节活动值班。大概一点过，忙得差不多，好不容易叫到一辆神州，趁师傅从二环开过来的空隙下楼抽了根烟。</p>
 <p>大年三十的北京其实很冷清，看不到烟火，远处的高楼大概零星点亮了几户人家，然后就是死一般的寂静，烟头的火星在零下十度的寒风中摇曳。</p>
@@ -704,27 +787,30 @@
 <p>今年春节例行立flag，目前的计划是把CMU的convex optimization看一半。</p>
 <p>嗯，目前进展是看了第一个lecture的一半。</p>
 <p>即将引来二十多天以来第一个不用设闹钟的睡眠周期。</p>
-<blockquote>我的一半人生</blockquote>
-<blockquote>飘荡就像风筝</blockquote>
-<blockquote>如果命运是风</blockquote>
-<blockquote>什么又是我的绳</blockquote>
+<blockquote>
+我的一半人生<br>
+飘荡就像风筝<br>
+如果命运是风<br>
+什么又是我的绳<br>
+</blockquote>
 <p>#Writing/2019 #Writing/杂谈 #Writing/成都</p></article></div>
-<div class="article-page" id="aD4F2FA04" data-cover="covers/D4F2FA04_slow_soul_bg_1.jpg"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2019-06-23</time><h1>慢灵魂</h1></header><p>有一个大学玩得比较好的同学的小微信群，最近的讨论话题都围绕着买房、跳槽、生孩子。</p>
+<div class="article-page" id="aD4F2FA04" data-cover="covers/D4F2FA04_slow_soul_bg_1.jpg" data-subtitle="终究会习惯，这种生活。"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2019-06-23</time><h1>慢灵魂</h1></header><p>有一个大学玩得比较好的同学的小微信群，最近的讨论话题都围绕着买房、跳槽、生孩子。</p>
 <p>很多事情做决定时总是有一大堆现实因素扯着你往地上拽，比如从SMU回成都的朋友L会因为男朋友和家庭父母原因而难以去自己想去的城市。</p>
 <p>说着说着就突然想起我们大学的时候。有一次大二刚开学，学校举行运动会，我们一行五人就趁机去逛了一天宜家。因为我们三个金融，一个会计，一个国商，所以还在校车上欢乐地刷人人看运动会看各学院走方阵『撕逼』。</p>
 <p>逛成都宜家的时候各种恶搞，我和WQ用iPod touch 4那500W的劣质摄像头对着各自拍了一堆低分辨率高噪点的囧照。</p>
 <p>下午去玉林那家著名的王妈手撕兔排队买兔子，准备带回学校吃。但是一路走饿得不行，最后在人民公园附近找了一家KFC，借着吃汉堡的名义，吃完了一整只手撕兔……</p>
 <p>最后晚上从光华校区坐校车回柳林，回宿舍前还特意去颐德楼I座实验室看被WQ吐槽了一个学期的某浓妆艳抹女老师照片。</p>
 <p>我记得那天晚上的月亮特别圆，大概和中秋节刚过去不久有关。走在回宿舍的路上，我的iPod刚好随机到卢广仲的《慢灵魂》：</p>
-<blockquote>终究会习惯  这种生活</blockquote>
-<blockquote>太多的困惑  我不想懂</blockquote>
-<blockquote>就在没有月光的时候  流星划过我的身后</blockquote>
+<blockquote>
+终究会习惯  这种生活<br>
+太多的困惑  我不想懂<br>
+就在没有月光的时候  流星划过我的身后<br>
+</blockquote>
 <p>那时候以为生活大概会常常保持着这般的快乐与满足，就连十月成都乍起的晚风也吹得我那文青的小情绪纷飞。</p>
 <p>直到很多年后才知道，中年人的世界里，想维持『从心所欲不逾矩』的少年心态原来也那么难。</p>
 <p><img src="images/D4F2FA04_IMG_2396.JPG" alt="" loading="lazy"></p>
 <p>#Writing/杂谈 #Writing/成都</p></article></div>
-<div class="article-page" id="aBEDFC21A"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2019-06-23</time><h1>我说今晚月光那么美，你说是的。</h1></header><blockquote>本文发表于2014–09-01</blockquote>
-<p>下班之前得知上周工作小组倒数TOP1，心里居然觉得“哦”就这么过去了。反正也是不喜欢的工作，你叫我怎么提得起兴趣去做。</p>
+<div class="article-page" id="aBEDFC21A" data-subtitle="本文发表于2014–09-01"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2019-06-23</time><h1>我说今晚月光那么美，你说是的。</h1></header><p>下班之前得知上周工作小组倒数TOP1，心里居然觉得“哦”就这么过去了。反正也是不喜欢的工作，你叫我怎么提得起兴趣去做。</p>
 <p>来杭州之前几乎不曾犹豫过，因为我始终找不到喜欢成都的理由。不止一次坐在夜晚八九点过穿梭于城市车水马龙的公交上靠着车窗听着好妹妹唱《我说今晚月光那么美,你说是的》，那时候真的天真地以为离开了会比较美好。</p>
 <p>然后你懂的。</p>
 <p>我在用各种方法提醒自己还是一个想读书的男人，下了班滚回家关上房门躲着室友开始背单词看Machine Learning，却悲哀地发现高强度的工作已经把大脑压迫着无法再继续学习。上班的公交上刷着微博和知乎看高频交易和算法，再不济也可以看信用评分、FICO、FRM或者财务估值，就是不想看工作相关内容。我在骄傲地宣称自己终究是学金融而非互联网公司的非技术民工小二。但是公交到古荡站然后随着上班的人流走过人行道再看到高耸的黄龙时代广场，也不由得叹一口气，手机放进裤子口袋，书包里拿出橙色工牌，又开始每日每时每分都完全相同的枯燥工作。</p>
@@ -741,7 +827,9 @@
 <p>看文献：刚毕业的时候还会看看券商深度研究的研报，后来因为工作性质实在差的太远，也没什么看的动力，就慢慢过度到看论文和一些互联网的文献，最好是挑逼格高的数理多的。看不看得懂是其次，主要能给人一种『啊这是人类文明的结晶，我也是能为人类做一些微小的贡献的人』的错觉，上天会格外照顾一些一样……</p>
 <p>不过有时候巡航阶段看着窗外远方连成一线的晚霞与夕阳，夜航时地面陡然出现的灯火勾勒出城市的轮廓，以及每次北京起飞时西边连绵起伏的山脊，都会觉得还是很美的啊。</p>
 <p>#Writing/杂谈 #Writing/2018</p></article></div>
-<div class="article-page" id="a675BEEB6" data-cover="covers/675BEEB6_6630239833443524700.jpg"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2019-06-23</time><h1>离回学校还有两天时间</h1></header><blockquote>本文发表于2012年9月3日</blockquote>
+<div class="article-page" id="a675BEEB6" data-cover="covers/675BEEB6_6630239833443524700.jpg" data-subtitle="本文发表于2012年9月3日"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2019-06-23</time><h1>离回学校还有两天时间</h1></header><blockquote>
+本文发表于2012年9月3日<br>
+</blockquote>
 <p>在ipad上下载了《ONE PIECE》漫画，准备一次性追完。虽说是三大民工漫之首，但质量的确不错。其实是想让自己爱上了海贼王之后又能在“喜欢”这一范围内新增一系列海贼相关的周边，不追点漫画心里不是很自在的感觉。</p>
 <p>CPA还是老样子，看起来头疼。听了一下午和晚上的课件，不禁深深怀疑光是不计效率的听完课件就需要花多少时间，想起来就害怕。谁叫之前拖得太久，看来我果真不适合在家里看书，以后别勉强自己了。</p>
 <p>新生们开学，搞得自己也很想回去。很难想明白为什么我那么爱校，明明是个又小又破又在郊区的地方，名字也不霸气也没多少牛人出没，但还是喜欢他喜欢他一直喜欢他。</p>
@@ -1491,10 +1579,12 @@
 <p>定义 $U \sim \text{Unif}[0,1], \ X_n = U + U^n$.</p>
 <p>证明： $X_n \xrightarrow[a.s]{n\rightarrow\infty} U$。</p>
 <p>证明这个性质需要用到全概率定理（law of total probability):</p>
-<blockquote>Law of Total Probability</blockquote>
-<blockquote>$S$ 是样本空间（sample space)，将其分为两个互斥空间: $S = S_1\coprod S_2$.</blockquote>
-<blockquote>for any given event A:</blockquote>
-<blockquote>$P(A) = P(A|S_1)P(S_1) + P(A|S_2)P(S_2)$</blockquote>
+<blockquote>
+Law of Total Probability<br>
+$S$ 是样本空间（sample space)，将其分为两个互斥空间: $S = S_1\coprod S_2$.<br>
+for any given event A:<br>
+$P(A) = P(A|S_1)P(S_1) + P(A|S_2)P(S_2)$<br>
+</blockquote>
 <p>现在分阶段讨论U的收敛性：</p>
 <p>1 U < 1: $$P(X_n</p></article></div>
 <div class="article-page" id="aEC8483C3"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><span class="badge">18.6501x</span><time>2025-08-10</time><h1>(Optional) Recitation. Distance measures between distributions</h1></header><p>#Courses/MITx/18.6501x</p>
@@ -1704,9 +1794,11 @@
 <p>\begin{aligned} \psi: \Theta &\rightarrow \mathbb R^d \\ \theta &\mapsto (m_1(\theta), m_2(\theta)..., m_d(\theta)) \end{aligned}</p>
 <p>$$</p>
 <p>Assume that $\psi$  is one-to-one (and hence, invertible).</p>
-<blockquote>Note: $\mapsto$ 用latex打是\mapsto, 代表函数映射</blockquote>
-<blockquote>one-to-one: 单射</blockquote>
-<blockquote>$\psi$： 希腊字母psi</blockquote>
+<blockquote>
+Note: $\mapsto$ 用latex打是\mapsto, 代表函数映射<br>
+one-to-one: 单射<br>
+$\psi$： 希腊字母psi<br>
+</blockquote>
 <p>设 $(E, \{\mathbf P_\theta\}*{\theta\in\Theta})$ 表示一个统计模型，对应统计实验 $X_1, …, X_n \stackrel{\text{iid}}{\sim} \mathbf P_{\theta^*}$，其中 $\theta^*\in\Theta$ 是真实参数。 假设  $\Theta\subset \mathbb R^d$ ($d \geq 1$) 。定义：</p>
 <p>$m_k{(\theta)} := \mathbf E[X^k]$ ，其中 $X \sim \mathbf P_\theta$。</p>
 <p>$m_k{(\theta)}$  被称为 <strong>$\mathbf P_\theta$</strong>的 $k$ 阶矩。同时定义矩映射：</p>
@@ -2209,16 +2301,20 @@
 <p>$$</p>
 <p>这是一个标准化的平方误差和，类似一个广义形式的Wald统计量。</p>
 <p>T_n是一个均值为0、协方差为 $I^{-1}$ 的正态向量经过 $I$ 的二次型。</p>
-<blockquote>这么写的目的是：</blockquote>
-<blockquote>1. 便于分析渐进分布：在H0下， $\sqrt n(\hat \theta - \theta^0) \sim N(0, I(\theta^0)^{-1})$</blockquote>
-<blockquote>2. 将标准正态分布左乘一个矩阵再右乘其转置（标准正态的二次型），正好是卡方分布的定义。？</blockquote>
+<blockquote>
+这么写的目的是：<br>
+1. 便于分析渐进分布：在H0下， $\sqrt n(\hat \theta - \theta^0) \sim N(0, I(\theta^0)^{-1})$<br>
+2. 将标准正态分布左乘一个矩阵再右乘其转置（标准正态的二次型），正好是卡方分布的定义。？<br>
+</blockquote>
 <p>⠀</p>
 <p>接下来做渐进行为分析：</p>
 <p>设 $Z_n:= \sqrt n(\hat \theta - \theta^0) \xrightarrow{d} \mathcal N(0, I(\theta^0)^{-1})$。那么，有：</p>
 <p>$T_n = Z_n^T \Sigma^{-1} Z_n \xrightarrow{d} \chi_d^2$, 这里的 $\Sigma = I^{-1}$。</p>
 <p><strong>这里用到了定义（虽然Z_n不是标准正态分布，但左右乘上了I(theta)，就起到了标准化的作用。</strong></p>
-<blockquote>[!IMPORTANT]</blockquote>
-<blockquote>任何形如 $Z_n^T \Sigma^{-1}, \text{where }Z\sim\mathcal N(0, \Sigma), 都服从\chi_d^2$。</blockquote>
+<blockquote>
+[!IMPORTANT]<br>
+任何形如 $Z_n^T \Sigma^{-1}, \text{where }Z\sim\mathcal N(0, \Sigma), 都服从\chi_d^2$。<br>
+</blockquote>
 <p>还有另一种思路：独立标准正态随机变量的平方和服从自由度为d的卡方分布。</p>
 <p>那么，我们要构造出这类随机变量的平方和形式，需要将T_n进行变形。</p>
 <p><img src="images/92C9EF46_image 18.png" alt="" loading="lazy"></p>
@@ -2985,12 +3081,14 @@
 <li>把矩阵通过<strong>初等行变换</strong>化为<strong>行阶梯形（row echelon form）</strong>或<strong>最简行阶梯形（reduced row echelon form）</strong>。</li>
 <li><strong>非零行的个数</strong>就是矩阵的秩。</li>
 <li>适合手算，也方便在概念上理解秩 = 最大线性无关行（列）的个数。</li>
-<blockquote>### 判断步骤</blockquote>
-<blockquote>1. 检查矩阵的每一行，从上到下。</blockquote>
-<blockquote>2. 如果整行都是 0 → 不计入 rank。</blockquote>
-<blockquote>3. 如果该行有主元（第一个非零元素），就算作一行。</blockquote>
-<blockquote>4. 统计所有有主元的行数，这个数就是 rank。</blockquote>
+<blockquote>
+### 判断步骤<br>
+1. 检查矩阵的每一行，从上到下。<br>
+2. 如果整行都是 0 → 不计入 rank。<br>
+3. 如果该行有主元（第一个非零元素），就算作一行。<br>
+4. 统计所有有主元的行数，这个数就是 rank。<br>
 </ul>
+</blockquote>
 <p><strong>2. 线性无关法</strong></p>
 <ul>
 <li>通过判断列向量（或行向量）之间的线性无关性，找到最大线性无关组的个数，这个数就是秩。</li>
@@ -3034,7 +3132,9 @@
 <p>$$</p>
 <p>可以看到，这四个矩阵的秩都是 1。</p>
 <p>有很多方法可以用来判断矩阵的秩。这里提供一个有用的事实：</p>
-<blockquote><strong>每一个秩为 1 的矩阵都可以写成两个向量的外积。反之，每一个外积 $\mathbf{u} \mathbf{v}^T$ 都是一个秩为 1 的矩阵。</strong></blockquote>
+<blockquote>
+<strong>每一个秩为 1 的矩阵都可以写成两个向量的外积。反之，每一个外积 $\mathbf{u} \mathbf{v}^T$ 都是一个秩为 1 的矩阵。</strong><br>
+</blockquote>
 <p>例如：</p>
 <p>$$</p>
 <p>A = u v^T, \quad B = v v^T, \quad C = w w^T, \quad D = x x^T</p>
@@ -3069,7 +3169,9 @@
 <p>$Y \in \mathbb R^n$, 是一个(n,1)维向量</p>
 <p>$\mathbb X_{n\times p}$ 是设计矩阵，(n, p)维矩阵</p>
 <p>$\beta$ 是特征权重，(p, 1)维向量。</p>
-<blockquote>当 $\mathbf X$ 是协变量向量时（即单样本情况下）， $\beta^T\mathbf X$ 和 $\mathbf X\beta^T$ 是等价的，结果都是标量。但如果是X是矩阵，这个等式就不成立了。</blockquote>
+<blockquote>
+当 $\mathbf X$ 是协变量向量时（即单样本情况下）， $\beta^T\mathbf X$ 和 $\mathbf X\beta^T$ 是等价的，结果都是标量。但如果是X是矩阵，这个等式就不成立了。<br>
+</blockquote>
 <p>LSE估计量 $\hat \beta$ 满足下列条件：</p>
 <p>$$</p>
 <p>\hat \beta = \arg\min_{\beta\in\mathbb R^p}\left\Vert \mathbf Y-\mathbb X\beta\right\Vert^2_2</p>
@@ -3126,8 +3228,10 @@
 <li>模型仍然是同方差的，因为噪声的方差为1/3；</li>
 <li>Y仍然为随机变量；</li>
 <li>LSE $\hat \beta$ 服从均匀分布。</li>
-<blockquote>因为 $\hat \beta = (\mathbb X^T \mathbb X)^{-1} \mathbb X^T Y = \beta + (\mathbb X^T \mathbb X)^{-1} \mathbb X^T\epsilon$ ，所以决定这个分布的仍然是 $\epsilon$ 的分布</blockquote>
+<blockquote>
+因为 $\hat \beta = (\mathbb X^T \mathbb X)^{-1} \mathbb X^T Y = \beta + (\mathbb X^T \mathbb X)^{-1} \mathbb X^T\epsilon$ ，所以决定这个分布的仍然是 $\epsilon$ 的分布<br>
 </ul>
+</blockquote>
 <h3>**7. Deterministic Design with Gaussian Noise** 具有高斯噪声的确定性设计</h3>
 <h4>Review of Multi-Dimensional Gaussians</h4>
 <p><img src="images/1B314286_image 12.png" alt="" loading="lazy"></p>
@@ -3152,8 +3256,10 @@
 <p>后者是一个正态分布，所以 $\hat \beta$ 也是一个正态分布。</p>
 <p>我们现在讨论 $(X^TX)^{-1}X^T\epsilon$ 的性质。</p>
 <p>他的期望为0，方差化简要用到线性变换的方差公式：</p>
-<blockquote>如果A是一个常数矩阵（非随机），z是一个随机向量，那么:</blockquote>
-<blockquote>$Var(Az) = A\ Var(z)\ A^T$</blockquote>
+<blockquote>
+如果A是一个常数矩阵（非随机），z是一个随机向量，那么:<br>
+$Var(Az) = A\ Var(z)\ A^T$<br>
+</blockquote>
 <p>所以方差为： $(X^TX)^{-1}X^T(\sigma^2I_n)X(X^TX)^{-1}$  （这里有一个trick: $(X^TX)^{-1}$ 的转置，逆和转置可以交换，所以等于  $((X^TX)^T)^{-1}$，又因为 $(X^TX)$ 是对称矩阵，转置等于自身。所以有了上面的形式。</p>
 <p>再对方差化简，有 $\sigma^2(X^TX)^{-1}$。</p>
 <p><img src="images/1B314286_image 15.png" alt="" loading="lazy"></p>
@@ -3165,10 +3271,12 @@
 <h3>**10. Quadratic Risk and Variance** 二次风险与方差</h3>
 <h4>计算 $E\left\Vert \hat \beta - \beta^*\right\Vert^2$</h4>
 <p>首先需要用到一个关于trace的技巧：</p>
-<blockquote>对一个向量x来说， $||x||^2 = x^Tx$ ， 这是一个标量，也可以看成是一个(1,1)的矩阵。</blockquote>
-<blockquote>拓展到矩阵维度， $||X||^2 = tr(X^TX)  = tr(XX^T)$。 矩阵形式的L2范数就是Frobenius范数。</blockquote>
-<blockquote>标准的Frobenius范数是指 $A \in \mathbb R^{m\times n}, \ ||A||_F = \sqrt{\sum_i^n\sum_j^m a^2_{ij}}$ 。在这道题里即为 $||X||^2 = \sum_{i,j}^px_{ij}^2$ ，也是一个标量。</blockquote>
-<blockquote>trace的期望等于期望的trace。</blockquote>
+<blockquote>
+对一个向量x来说， $||x||^2 = x^Tx$ ， 这是一个标量，也可以看成是一个(1,1)的矩阵。<br>
+拓展到矩阵维度， $||X||^2 = tr(X^TX)  = tr(XX^T)$。 矩阵形式的L2范数就是Frobenius范数。<br>
+标准的Frobenius范数是指 $A \in \mathbb R^{m\times n}, \ ||A||_F = \sqrt{\sum_i^n\sum_j^m a^2_{ij}}$ 。在这道题里即为 $||X||^2 = \sum_{i,j}^px_{ij}^2$ ，也是一个标量。<br>
+trace的期望等于期望的trace。<br>
+</blockquote>
 <p>所以可以开始变形：</p>
 <p>$E\left\Vert \hat \beta - \beta^*\right\Vert^2 = E[tr(\hat \beta - \beta^*)(\hat \beta - \beta^*)^T] = tr(E[(\hat \beta - \beta^*)(\hat \beta - \beta^*)^T]$</p>
 <p>注意到由于 $E[\hat \beta - \beta^*]=0$, 所以上面的期望等同于 $Cov(\hat\beta-\beta^*)$ 协方差矩阵，也即等于 $\sigma^2(X^TX)^{-1}$ 。</p>
@@ -3214,8 +3322,10 @@
 <p>对多重假设检验（实际违阳性率过高），有两种解决的思路。</p>
 <p>一是利用统计学通用的多重检验方法：Bonferroni’s Test, BH方法。这个在生物统计上用的比较多。</p>
 <p>二是用计量经济学的方法： F检验。</p>
-<blockquote>F检验：检验所有待估计参数不全为零。即H0假设为：</blockquote>
-<blockquote>$\beta_0= \beta_1 = \dots_ = \beta_j = 0$</blockquote>
+<blockquote>
+F检验：检验所有待估计参数不全为零。即H0假设为：<br>
+$\beta_0= \beta_1 = \dots_ = \beta_j = 0$<br>
+</blockquote>
 <p><img src="images/1B314286_image 26.png" alt="" loading="lazy"></p>
 <p><strong>核心区别对比</strong></p>
 <p>| 维度        | F检验                                      | Bonferroni校正              | BH方法（FDR控制）        |</p>
@@ -3418,7 +3528,9 @@
 <p>所以这道题里：</p>
 <p>第一个图想表达的是：NAND(x1, x1)  = NOT(x1 AND x1) = NOT(x1)</p>
 <p>第二个图想表达的是：NAND(NAND(x1, x1) AND NAND(x2, x2)) = NAND(NOT(x1) and NOT(x2)) = NOT(NOT(x1 OR x2)) = OR(x1, x2)</p>
-<blockquote>妈的头都看晕了</blockquote>
+<blockquote>
+妈的头都看晕了<br>
+</blockquote>
 <h3>6. Hidden Layer Models</h3>
 <p>一道练习题：</p>
 <p><img src="images/1256F483_image 6.png" alt="" loading="lazy"></p>
@@ -3921,8 +4033,10 @@ class CNN(nn.Module):
 <p>$$</p>
 <p>标准答案可以不用化简，但化简其实是最浪费时间的。</p>
 <h4>Review: Joint, Conditional, and Marginal Distributions: Discrete Example</h4>
-<blockquote>[!IMPORTANT]</blockquote>
-<blockquote>$X$ 是一个服从泊松分布的离散随机变量。给定 $X=x$, $Y$ 是一个二项随机变量 $\text{Binom}(x,p)$</blockquote>
+<blockquote>
+[!IMPORTANT]<br>
+$X$ 是一个服从泊松分布的离散随机变量。给定 $X=x$, $Y$ 是一个二项随机变量 $\text{Binom}(x,p)$<br>
+</blockquote>
 <ol>
 <li>给定 $X=x,\ Y$ 的上下界分别是多少？</li>
 </ol>
@@ -3968,9 +4082,11 @@ class CNN(nn.Module):
 </ul>
 <p><img src="images/B4A3781D_image 5.png" alt="" loading="lazy"></p>
 <h4>Concept Check: Conditional Quantile 概念复习：条件分位数</h4>
-<blockquote>[!IMPORTANT]</blockquote>
-<blockquote>令 $(X,Y)$  是一对随机变量并且联合密度 $f(x,y)=x+y$，定义域为 $[0,1]^2$ 。</blockquote>
-<blockquote>给定x, 求分位数 $q_\alpha(x)$ 使 $P[Y\le q_\alpha(x)|X=x] = 1-\alpha$ 。这个等于是求 $Y|X=x$ 的 $(1-\alpha)$ -分位数函数。</blockquote>
+<blockquote>
+[!IMPORTANT]<br>
+令 $(X,Y)$  是一对随机变量并且联合密度 $f(x,y)=x+y$，定义域为 $[0,1]^2$ 。<br>
+给定x, 求分位数 $q_\alpha(x)$ 使 $P[Y\le q_\alpha(x)|X=x] = 1-\alpha$ 。这个等于是求 $Y|X=x$ 的 $(1-\alpha)$ -分位数函数。<br>
+</blockquote>
 <p>首先得到Y|X的条件密度函数 $h(y|x) =(x+y)/(x+1/2)$ 。</p>
 <p>然后根据定义，写出条件分位数的概率：</p>
 <p>$F_{Y|X}(y|x) = \int_0^qh(y|x)dy = 1-\alpha$</p>
@@ -3995,22 +4111,26 @@ class CNN(nn.Module):
 <p>$$</p>
 <p><img src="images/B4A3781D_image 10.png" alt="" loading="lazy"></p>
 <p><img src="images/B4A3781D_image 14.png" alt="" loading="lazy"><img src="images/B4A3781D_image 15.png" alt="" loading="lazy"></p>
-<blockquote>[!IMPORTANT]</blockquote>
-<blockquote><strong>最小化问题（Minimization Problem)：</strong></blockquote>
-<blockquote>假设 $X$ 是一个任意的随机变量，均值和方差为 $\mu, \sigma$ 。现在我们计算一个标量 $k$ ，使方程 $f(k) = \mathbb E[(X-k)^2]$ 最小。</blockquote>
+<blockquote>
+[!IMPORTANT]<br>
+<strong>最小化问题（Minimization Problem)：</strong><br>
+假设 $X$ 是一个任意的随机变量，均值和方差为 $\mu, \sigma$ 。现在我们计算一个标量 $k$ ，使方程 $f(k) = \mathbb E[(X-k)^2]$ 最小。<br>
+</blockquote>
 <p>对f(k)进行化简，有：$f(k) = E[X^2-2kX+k^2]  = E[X^2] - 2kE[X] + k^2$</p>
 <p>由于已知均值和方差，所以有： $f(k) = \sigma^2+\mu^2 - 2k*\mu + k^2$</p>
 <p>这是一个关于k的二次函数，求极值就是函数求导。</p>
 <p>$k = \arg\min f(k) = E[X] = \mu$</p>
 <p>这个结论说明：对任意随机变量，要令其距离k的欧氏距离的期望最小，那么这个k就是他自身的期望。</p>
 <p>由此引出下一道题：</p>
-<blockquote>[!IMPORTANT]</blockquote>
-<blockquote><strong>估计量（Estimator)</strong></blockquote>
-<blockquote>回归方程： $v(x) := \mathbb E[Y\mid X=x] = a+bx$ ,如果令 $\hat Y = g(X)$, 那么 $\hat Y$ 取什么值，可以令：</blockquote>
-<blockquote>$$</blockquote>
-<blockquote>\mathbb E[(Y-\hat Y)^2\mid X =x]</blockquote>
-<blockquote>$$</blockquote>
-<blockquote>最小。</blockquote>
+<blockquote>
+[!IMPORTANT]<br>
+<strong>估计量（Estimator)</strong><br>
+回归方程： $v(x) := \mathbb E[Y\mid X=x] = a+bx$ ,如果令 $\hat Y = g(X)$, 那么 $\hat Y$ 取什么值，可以令：<br>
+$$<br>
+\mathbb E[(Y-\hat Y)^2\mid X =x]<br>
+$$<br>
+最小。<br>
+</blockquote>
 <p>这道题有两个解法，一是按照上一题的结论，可以得到 $\hat Y = \arg\min \mathbb E[(Y-\hat Y)^2\mid X =x] = E[Y] = v(x) = a+bx$</p>
 <p>另一种解法是按照定义打开期望（计算方式与上面相同）。</p>
 <p>These two exercises verify that the Least Squares Estimator is consistent in the following sense: <strong>using the actual distribution on $(X,Y)$  , the true pair $(a,b)$ itself is a least squares estimator.</strong></p>
@@ -4023,7 +4143,9 @@ class CNN(nn.Module):
 <p>(a^*, b^*) = \arg\min_{(a,b)\in\mathbb R^2}\mathbb E[(Y-a-bX)^2]</p>
 <p>$$</p>
 <p>接下来求解a和b。</p>
-<blockquote>这里有一个化简的技巧：偏导和期望符号可以任意交换。在统计的课程上这个技巧永远成立。</blockquote>
+<blockquote>
+这里有一个化简的技巧：偏导和期望符号可以任意交换。在统计的课程上这个技巧永远成立。<br>
+</blockquote>
 <p>分别对a和b求偏导，令其等于0，有：</p>
 <p>$$</p>
 <p>\begin{align}</p>
@@ -4082,8 +4204,10 @@ class CNN(nn.Module):
 <p>同样远大于真实值1/8。</p>
 <p><img src="images/00B15142_image 4.png" alt="" loading="lazy"></p>
 <h4>3. Exercise: Markov inequality</h4>
-<blockquote>[!IMPORTANT]</blockquote>
-<blockquote>Let $Z$ be a nonnegative random variable that satisfies $E(Z^4) = 4$. Apply the Markov inequality to the random variable $Z^4$ to find the tightest possible (given the available information) upper bound on $P(Z≥2)$.</blockquote>
+<blockquote>
+[!IMPORTANT]<br>
+Let $Z$ be a nonnegative random variable that satisfies $E(Z^4) = 4$. Apply the Markov inequality to the random variable $Z^4$ to find the tightest possible (given the available information) upper bound on $P(Z≥2)$.<br>
+</blockquote>
 <p>这道题不能通过将 $E(Z^4)=4$ 化简，因为只知道四阶矩，推导不出一阶矩。因此需要想办法将Z变形为Z^4.</p>
 <p>$$</p>
 <p>P(Z\ge2) = P(Z^4\ge16) \le \frac{E[Z^4]}{16} = 1/4</p>
@@ -4202,8 +4326,10 @@ class CNN(nn.Module):
 <p><strong>1</strong> <strong>无偏性（unbiased）：</strong> $\mathbf E[\widehat \Theta_n] = \theta$, 对所有 $\theta$ 都成立。意味着估计量的期望等于真实值。</p>
 <p><strong>2</strong> <strong>相合性（consistency）：</strong> WLLN: $\widehat \Theta_n \rightarrow^p \theta$，对所有 $\theta$ 都成立。意味着随着n增大，估计量依概率收敛于真实值。</p>
 <p><strong>3</strong> <strong>均方误差（mean squared error, MSE):</strong> $\mathbf E[(\widehat \Theta - \theta)^2] = Var(\widehat \Theta_n) = \sigma^2/n$。样本均值的均方误差只和n有关，和theta无关。但其他估计量不一定具有这个性质。</p>
-<blockquote>[!IMPORTANT]</blockquote>
-<blockquote>⠀对MSE推导时用到了无偏性和方差的最原始形式： $Var(X) = \mathbf E[X-E[X]]^2$，即一个随机变量减去其期望的平方的期望就是随机变量X的方差。</blockquote>
+<blockquote>
+[!IMPORTANT]<br>
+⠀对MSE推导时用到了无偏性和方差的最原始形式： $Var(X) = \mathbf E[X-E[X]]^2$，即一个随机变量减去其期望的平方的期望就是随机变量X的方差。<br>
+</blockquote>
 <p><img src="images/DA9843F1_image 5.png" alt="" loading="lazy"></p>
 <h3>4. Exercise: Estimator properties</h3>
 <p>我们假设 $\theta$ 是随机变量 $X$ 的一个未知期望（假设X的方差为正且有限）。我们构建一个样本均值 $M_n$，并且构建一个估计量： $\widehat \Theta = M_n+\frac{1}{n}$。</p>
@@ -4309,6 +4435,56 @@ class CNN(nn.Module):
 <p>| <strong>Unit 8. Limit theorems and classical statistics 极限理论与经典统计</strong> | [[\[Lecture 18\] Inequalities, convergence, and the Weak Law of Large Numbers 不等式，收敛性与弱大数定律]] |</p>
 <p>|                                                              |                                                              |</p>
 <p><img src="images/A4547C6A_image.png" alt="" loading="lazy"></p></article></div>
+<div class="article-page" id="a86ED7855"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header><time>2022-09-15</time><h1>About Me</h1></header><blockquote>
+千の夜をこえて<br>
+今あなたに会いに行こう<br>
+伝えなきゃならないことがある<br>
+</blockquote>
+<p>我是HeYan，男，四川土著，<s>帅且可爱</s>，🌈。理性，INTP，热爱科学，并且有点宅。会弹琴，常听J-Rock, J-Pop, Folks, Original Soundtrack。喜欢 <a href="http://ikimonogakari.com/" target="_blank" rel="noopener">いきものがかり</a> (生物股长)，<a href="http://www.aimyong.net/" target="_blank" rel="noopener">Aimyon</a> ，<a href="https://weibo.com/cypmusicstudio" target="_blank" rel="noopener">陈致逸</a> 。现在常住在北京。</p>
+<p>现在在tiktok-platform responsibility部门摸鱼。在此之前，我在字节跳动-生活服务的平台治理（base成都）打工。</p>
+<p>在重新回到字节前，就职于美团保险，并负责一个小的两核策略团队。更早一些时候，在<a href="https://www.bytedance.com/zh/" target="_blank" rel="noopener">字节跳动</a>有过两段工作履历，负责建立了抖音支付最早期的风险管理体系以及做过一段时间的贷前信用策略，并且交到了几个很好的朋友。<strong>当时的字节跳动带给了我迄今为止的工作经历中最棒的体验</strong>。在此期间有过短暂的银行风险经理的工作。在加入字节跳动之前，在美团支付团队负责支付风险管理。最早的时候，在<a href="https://www.antgroup.com/" target="_blank" rel="noopener">支付宝</a>做支付方向的风控，那是毕业之后的第一份工作。</p>
+<p>在工作之前，我在四川成都的<a href="https://www.swufe.edu.cn/" target="_blank" rel="noopener">西南财经大学</a>度过了四年本科生活，我很喜欢成都这座城市，并且在成都买了一套贷款三十年的房子（<s>虽然迄今为止入住的时间总和不超过一个月，计算ROI是一笔非常失败的投资</s>）。现在房贷已经基本还完啦。</p>
+<p>想读PhD拖了十年的重度拖延症患者，但我相信时间会在三十五岁之前给我一个答案。感兴趣的领域包括宏观金融、资本市场、机器学习与统计。在此之外也对编曲与作曲抱有极大的兴趣。</p>
+<p>有一只叫做何包蛋的五岁美国短毛猫，一只叫做香蕉的六岁柴犬，以及一个男朋友，他在游戏行业从事数据分析工作。我们都希望能够环游世界。</p>
+<h3>关于专业与兴趣</h3>
+<h4>MITx Micromasters Statistics and Data Science</h4>
+<ul>
+<li>6.431x Probability - The Science of Uncertainty and Data ✅</li>
+<li>18.6501x Fundamentals of Statistics ✅</li>
+<li>6.86x Machine Learning with Python-From Linear Models to Deep Learning ✅</li>
+<li>6.419x Data Analysis: Statistical Modeling and Computation in Applications (ongoing)</li>
+</ul>
+<h4>Finance & Risk Management</h4>
+<ul>
+<li><a href="http://my.garp.org/DigitalBadgeFRM?id=0034000001aeWr3AAE" target="_blank" rel="noopener">FRM 金融风险管理师 持证人</a></li>
+<li>CFA 永久性弃坑</li>
+<li>CICPA 永久性弃坑</li>
+</ul>
+<h4>Coursera</h4>
+<ul>
+<li><a href="https://www.coursera.org/specializations/jhu-data-science" target="_blank" rel="noopener">Data Science Specialization 数据科学专项认证，约翰霍普金斯大学</a>- R Programming, Practical Machine Learning, Statistical Inference, Exploratory Data Analysis, etc.</li>
+<li><a href="https://www.coursera.org/account/accomplishments/verify/CL8NUCSTDAJT" target="_blank" rel="noopener">Measuring Causal Effects in the Social Sciences, 哥本哈根大学</a></li>
+</ul>
+<h4>Udacity</h4>
+<ul>
+<li><a href="https://graduation.udacity.com/confirm/A4TCQYGQ" target="_blank" rel="noopener">Deep Learning NanoDgree 深度学习</a></li>
+</ul>
+<p>⠀</p>
+<h3>迄今为止的人生路径</h3>
+<ul>
+<li>2025-now  TikTok - Platform Responsibility, Beijing</li>
+<li>2024 - 2025 字节跳动 - 本地生活-平台治理与体验，成都</li>
+<li>2021 - 2024 美团点评 - 保险平台部，北京</li>
+<li>2020 - 2021 字节跳动 - 财经业务部，北京</li>
+<li>2019 - 2020 蓝海银行 - 零售信贷风险管理部，北京（并不是很喜欢这段经历）</li>
+<li>2018 - 2019 字节跳动 - 财经业务部，北京</li>
+<li>2015 - 2018 美团点评 - 技术工程部/支付平台部，北京</li>
+<li>2014 - 2015 支付宝 - 国内风险管理部，杭州</li>
+<li>2010 - 2014 西南财经大学，成都</li>
+</ul>
+<h3>关于签名</h3>
+<p>第一段来自<a href="https://zh.wikipedia.org/wiki/Aqua_Timez" target="_blank" rel="noopener">Aqua Timez</a>的<a href="https://music.douban.com/subject/1926414/" target="_blank" rel="noopener">千の夜をこえて</a>, 2010年左右最喜欢的日文歌。这个乐队在2018年正式解散。</p>
+<p>#Writing/About</p></article></div>
 
 
     <!-- Lightbox -->
@@ -4325,7 +4501,7 @@ class CNN(nn.Module):
 </div>
 
 <script>var lightboxData={"gal-Melbourne-2026-Spring": ["gallery/Melbourne 2026 Spring/DSCF2618.jpg", "gallery/Melbourne 2026 Spring/DSCF2621.jpg", "gallery/Melbourne 2026 Spring/DSCF2821.jpg"], "gal-Tokyo-2025-Spring": ["gallery/Tokyo 2025 Spring/185F7609-BF26-460C-9C32-04CD819507C0_4_5005_c.jpeg", "gallery/Tokyo 2025 Spring/1B741FFB-D30C-46A3-AF19-75E2AE904CC0_1_105_c.jpeg", "gallery/Tokyo 2025 Spring/29ECA543-A954-4349-8FF9-774E57DA0EED_1_105_c.jpeg", "gallery/Tokyo 2025 Spring/2C9C110F-565E-4783-8704-763BDA487A98_1_105_c.jpeg", "gallery/Tokyo 2025 Spring/596B828C-A101-4A41-B260-452F22A5D4D8_1_105_c.jpeg", "gallery/Tokyo 2025 Spring/7404C4BF-DE3D-4DD0-9BF0-3B335A701661_1_105_c.jpeg", "gallery/Tokyo 2025 Spring/82C3BF15-1650-4E41-A423-9690D9B5440F_1_105_c.jpeg", "gallery/Tokyo 2025 Spring/A6A9F970-067B-4FC4-B5A5-D4A4EBCA1A60_4_5005_c.jpeg", "gallery/Tokyo 2025 Spring/B1B464B9-2791-44C5-97B6-5602A7C830B9_1_105_c.jpeg", "gallery/Tokyo 2025 Spring/B8E7D429-19FC-46FA-BA3E-BF3EB5787228_4_5005_c.jpeg", "gallery/Tokyo 2025 Spring/D37E98A7-2F3A-49CB-85B9-94B90401D777_1_105_c.jpeg", "gallery/Tokyo 2025 Spring/E23F2799-C182-4C86-9F2D-4EDFD1CF0E94_1_105_c.jpeg"]};</script>
-<script src="js/app.js?v=1778695913"></script>
+<script src="js/app.js?v=1778778748"></script>
 <script>
 document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}]});});
 </script>

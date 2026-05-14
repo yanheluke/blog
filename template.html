@@ -50,6 +50,12 @@
       <p>摄影作品</p>
     </div>
   </section>
+  <section class="hero has-bg" __ABO_BG__ id="hero-about">
+    <div class="hero-inner">
+      <h1>Behind the words, <em>a person</em></h1>
+      <p>关于我 · 字里行间的碎片</p>
+    </div>
+  </section>
 </section>
 
 <div class="app-layout">
@@ -60,6 +66,9 @@
     </div>
     <div class="sidebar-item" id="nav-academic" onclick="switchSection('academic')">
       <span class="icon" style="background:var(--blue);color:#000">A</span>Academic<span class="count">__ACNT__</span>
+    </div>
+    <div class="sidebar-item" id="nav-about" onclick="switchSection('about')">
+      <span class="icon" style="background:var(--red);color:#000">M</span>About<span class="count">__ABTCNT__</span>
     </div>
     <div class="sidebar-item" id="nav-gallery" onclick="switchSection('gallery')">
       <span class="icon" style="background:var(--orange);color:#000">G</span>Gallery<span class="count">__GCNT__</span>
@@ -74,6 +83,7 @@
         <div class="gallery-list" id="gallery-list">__GALBUMS__</div>
         __GALPAGES__
       </div>
+      <div class="section-content" id="section-about">__ABROWS__</div>
     </div>
 
     __ARTICLES__

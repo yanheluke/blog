@@ -47,7 +47,11 @@ CONTENT_DIR = os.path.join(ROOT, 'content')
 def md_to_html(text, strip_fm=True):
     if not text: return ''
     lines = text.split('\n')
-    out, in_code, in_list, lt = [], False, False, 'ul'
+    out, in_code, in_list, in_bq, lt = [], False, False, False, 'ul'
+
+    def flush_bq():
+        nonlocal in_bq
+        if in_bq: out.append('</blockquote>'); in_bq = False
 
     for line in lines:
         line = re.sub(r'!\[([^\]]*)\]\(([^)]+)\)',
@@ -61,20 +65,25 @@ def md_to_html(text, strip_fm=True):
         if in_code: out.append(line); continue
         if not s:
             if in_list: out.append(f'</{lt}>'); in_list = False
+            flush_bq()
             continue
 
-        if s.startswith('#### '): out.append(f'<h5>{s[5:]}</h5>')
-        elif s.startswith('### '): out.append(f'<h4>{s[4:]}</h4>')
-        elif s.startswith('## '): out.append(f'<h3>{s[3:]}</h3>')
-        elif s.startswith('# '): out.append(f'<h3>{s[2:]}</h3>')
-        elif s.startswith('> '): out.append(f'<blockquote>{_inl(s[2:])}</blockquote>')
-        elif s in ('---','- - -','***'): out.append('<hr>')
+        if s.startswith('#### '): flush_bq(); out.append(f'<h5>{s[5:]}</h5>')
+        elif s.startswith('### '): flush_bq(); out.append(f'<h4>{s[4:]}</h4>')
+        elif s.startswith('## '): flush_bq(); out.append(f'<h3>{s[3:]}</h3>')
+        elif s.startswith('# '): flush_bq(); out.append(f'<h3>{s[2:]}</h3>')
+        elif s.startswith('> '):
+            if not in_bq: out.append('<blockquote>'); in_bq = True
+            out.append(f'{_inl(s[2:])}<br>')
+        elif s in ('---','- - -','***'): flush_bq(); out.append('<hr>')
         elif re.match(r'[-*+]\s', s):
+            flush_bq()
             if not in_list or lt != 'ul':
                 if in_list: out.append(f'</{lt}>')
                 out.append('<ul>'); in_list, lt = True, 'ul'
             out.append(f'<li>{_inl(s[2:])}</li>')
         elif re.match(r'\d+[.)]\s', s):
+            flush_bq()
             if not in_list or lt != 'ol':
                 if in_list: out.append(f'</{lt}>')
                 out.append('<ol>'); in_list, lt = True, 'ol'
@@ -82,13 +91,16 @@ def md_to_html(text, strip_fm=True):
             out.append(f'<li>{_inl(c2)}</li>')
         else:
             if in_list: out.append(f'</{lt}>'); in_list = False
+            flush_bq()
             out.append(f'<p>{_inl(s)}</p>')
 
     if in_list: out.append(f'</{lt}>')
+    flush_bq()
     if in_code: out.append('</code></pre>')
     return '\n'.join(out)
 
 def _inl(t):
+    t = re.sub(r'~~(.+?)~~', r'<s>\1</s>', t)
     t = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', t)
     t = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2" target="_blank" rel="noopener">\1</a>', t)
     t = re.sub(r'`([^`]+)`', r'<code>\1</code>', t)
@@ -127,6 +139,7 @@ def load_articles(section):
         course_id = meta.get('course', None)
         cover_file = meta.get('cover', None)
         cover_oss = meta.get('cover_oss', None)
+        subtitle = meta.get('subtitle', None)
 
         html_body = md_to_html(body)
 
@@ -161,6 +174,7 @@ def load_articles(section):
 
         articles.append({
             'id': aid, 'title': title, 'date': pub_date,
+            'subtitle': subtitle,
             'summary': summary, 'cover': cover,
             'course': course_id, 'section': section,
             'body': html_body,
@@ -227,26 +241,30 @@ def render_rows(rows_data):
         if rtype == 'featured':
             a = items[0]
             badge = ('<span class="badge">%s</span>' % a['course']) if a.get('course') else ''
+            sub = ('<p class="feat-subtitle">%s</p>' % a['subtitle']) if a.get('subtitle') else ''
             grad, tc, pc = cover_adaptive(a.get('cover'))
-            h += '<section class="row row-featured" onclick="openArticle(\'%s\')"><div class="feat-cover"><img src="%s" alt=""><div class="feat-gradient" style="background:%s"></div><div class="feat-text">%s<time>%s</time><h2 style="color:%s">%s</h2><p style="color:%s">%s</p></div></div></section>\n' % (a['id'], a['cover'] or '', grad, badge, a['date'] or '', tc, a['title'], pc, a['summary'])
+            h += '<section class="row row-featured" onclick="openArticle(\'%s\')"><div class="feat-cover"><img src="%s" alt=""><div class="feat-gradient" style="background:%s"></div><div class="feat-text">%s<time>%s</time><h2 style="color:%s">%s</h2>%s<p style="color:%s">%s</p></div></div></section>\n' % (a['id'], a['cover'] or '', grad, badge, a['date'] or '', tc, a['title'], sub, pc, a['summary'])
         elif rtype == 'cols3':
             h += '<section class="row row-3col">\n'
             for a in items:
                 cv = '<div class="card-img"><img src="%s" alt=""></div>' % a['cover'] if a['cover'] else ''
                 badge = '<span class="badge">%s</span>' % a['course'] if a.get('course') else ''
-                h += '<article class="card" onclick="openArticle(\'%s\')">%s<div class="card-body">%s<time>%s</time><h2>%s</h2><p>%s</p></div></article>\n' % (a['id'], cv, badge, a['date'] or '', a['title'], a['summary'])
+                sub = ('<p class="card-subtitle">%s</p>' % a['subtitle']) if a.get('subtitle') else ''
+                h += '<article class="card" onclick="openArticle(\'%s\')">%s<div class="card-body">%s<time>%s</time><h2>%s</h2>%s<p>%s</p></div></article>\n' % (a['id'], cv, badge, a['date'] or '', a['title'], sub, a['summary'])
             h += '</section>\n'
         elif rtype == 'cols2':
             h += '<section class="row row-2col">\n'
             for a in items:
                 cv = '<div class="card-img"><img src="%s" alt=""></div>' % a['cover'] if a['cover'] else ''
                 badge = '<span class="badge">%s</span>' % a['course'] if a.get('course') else ''
-                h += '<article class="card" onclick="openArticle(\'%s\')">%s<div class="card-body">%s<time>%s</time><h2>%s</h2><p>%s</p></div></article>\n' % (a['id'], cv, badge, a['date'] or '', a['title'], a['summary'])
+                sub = ('<p class="card-subtitle">%s</p>' % a['subtitle']) if a.get('subtitle') else ''
+                h += '<article class="card" onclick="openArticle(\'%s\')">%s<div class="card-body">%s<time>%s</time><h2>%s</h2>%s<p>%s</p></div></article>\n' % (a['id'], cv, badge, a['date'] or '', a['title'], sub, a['summary'])
             h += '</section>\n'
         elif rtype == 'cols1':
             a = items[0]
             badge = '<span class="badge">%s</span>' % a['course'] if a.get('course') else ''
-            h += '<article class="row row-full" onclick="openArticle(\'%s\')"><div class="full-body">%s<time>%s</time><h2>%s</h2><p>%s</p></div></article>\n' % (a['id'], badge, a['date'] or '', a['title'], a['summary'])
+            sub = ('<p class="card-subtitle">%s</p>' % a['subtitle']) if a.get('subtitle') else ''
+            h += '<article class="row row-full" onclick="openArticle(\'%s\')"><div class="full-body">%s<time>%s</time><h2>%s</h2>%s<p>%s</p></div></article>\n' % (a['id'], badge, a['date'] or '', a['title'], sub, a['summary'])
     return h
 
 # ═══════════════════════════════════════════════════════
@@ -269,7 +287,8 @@ def fix_image_paths(html):
 print("Loading articles...")
 writing_arts = load_articles('writing')
 mitx_arts = load_articles('academic')
-print(f"  Writing: {len(writing_arts)}, Academic: {len(mitx_arts)}")
+about_arts = load_articles('about')
+print(f"  Writing: {len(writing_arts)}, Academic: {len(mitx_arts)}, About: {len(about_arts)}")
 
 print("Rendering rows...")
 WRITING_ROWS = render_rows(build_rows(writing_arts))
@@ -277,7 +296,7 @@ MITX_ROWS = render_rows(build_rows(mitx_arts))
 
 print("Rendering article pages...")
 ARTICLES_HTML = ''
-for a in writing_arts + mitx_arts:
+for a in writing_arts + mitx_arts + about_arts:
     badge = '<span class="badge">%s</span>' % a['course'] if a.get('course') else ''
     body = fix_image_paths(a['body'])
 
@@ -289,10 +308,11 @@ for a in writing_arts + mitx_arts:
         '', body, count=1
     ).lstrip()
 
-    # Cover URL for hero banner swap
+    # Cover URL and subtitle for hero banner swap
     cover_attr = ' data-cover="%s"' % a['cover'] if a['cover'] else ''
+    sub_attr = ' data-subtitle="%s"' % a['subtitle'].replace('"', '&quot;') if a.get('subtitle') else ''
 
-    ARTICLES_HTML += '<div class="article-page" id="%s"%s><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header>%s<time>%s</time><h1>%s</h1></header>%s</article></div>\n' % (a['id'], cover_attr, badge, a['date'] or '', a['title'], body)
+    ARTICLES_HTML += '<div class="article-page" id="%s"%s%s><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header>%s<time>%s</time><h1>%s</h1></header>%s</article></div>\n' % (a['id'], cover_attr, sub_attr, badge, a['date'] or '', a['title'], body)
 
 # ═══════════════════════════════════════════════════════
 # GALLERY
@@ -365,6 +385,32 @@ else:
     acov = next((a['cover'] for a in mitx_arts if a['cover']), None)
     if acov: aho_bg = 'style="background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),url(%s) center/cover;display:none"' % acov
 
+# About hero — find home-about with any extension
+HOME_ABOUT = None
+for ext in ('.jpg', '.jpeg', '.png', '.webp'):
+    p = os.path.join(ROOT, 'covers', f'home-about{ext}')
+    if os.path.exists(p):
+        HOME_ABOUT = f'covers/home-about{ext}'
+        break
+abo_bg = ''
+if HOME_ABOUT:
+    abo_bg = f'style="background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),url({HOME_ABOUT}) center/cover;display:none"'
+else:
+    print('WARNING: covers/home-about.* not found — using fallback cover')
+    acov = next((a['cover'] for a in about_arts if a['cover']), None)
+    if acov: abo_bg = f'style="background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),url({acov}) center/cover;display:none"'
+
+# About page content — render the first about article as a prose block
+ABOUT_CONTENT = ''
+if about_arts:
+    a = about_arts[0]
+    body = fix_image_paths(a['body'])
+    body = re.sub(
+        r'<h3>\s*' + re.escape(a['title']) + r'\s*</h3>',
+        '', body, count=1
+    ).lstrip()
+    ABOUT_CONTENT = '<article class="prose about-prose">%s</article>' % body
+
 # ═══════════════════════════════════════════════════════
 # GENERATE HTML
 # ═══════════════════════════════════════════════════════
@@ -384,16 +430,19 @@ gho_bg = 'style="background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),url
 html = template.replace('__WCNT__', str(len(writing_arts)))
 html = html.replace('__ACNT__', str(len(mitx_arts)))
 html = html.replace('__GCNT__', str(len(ALBUMS)))
+html = html.replace('__ABTCNT__', str(len(about_arts)))
 html = html.replace('__WHO_BG__', who_bg)
 # Cache-busting version
 ver = str(int(time.time()))
 
 html = html.replace('__AHO_BG__', aho_bg)
 html = html.replace('__GHO_BG__', gho_bg)
+html = html.replace('__ABO_BG__', abo_bg)
 html = html.replace('css/style.css', f'css/style.css?v={ver}')
 html = html.replace('js/app.js', f'js/app.js?v={ver}')
 html = html.replace('__WROWS__', WRITING_ROWS)
 html = html.replace('__AROWS__', MITX_ROWS)
+html = html.replace('__ABROWS__', ABOUT_CONTENT)
 html = html.replace('__GALBUMS__', GALLERY_ALBUM_LIST)
 html = html.replace('__GALPAGES__', GALLERY_ALBUM_PAGES)
 html = html.replace('__ARTICLES__', ARTICLES_HTML)

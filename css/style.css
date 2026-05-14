@@ -92,7 +92,9 @@ body{font-family:var(--font-body);background:var(--black);color:var(--text);line
 .hero.article-view .hero-inner{padding-top:34vh}
 .hero .article-title{font-size:48px;font-weight:700;letter-spacing:-1px;line-height:1.15;font-family:var(--font-ui);color:#fff}
 .hero .article-title em{color:var(--green);font-style:normal}
+.hero .article-subtitle{font-size:18px;font-weight:700;color:rgba(255,255,255,.8);font-family:var(--font-ui);line-height:1.4;margin:6px 0 0}
 .hero .article-meta{font-size:13px;font-weight:600;color:rgba(255,255,255,.6);font-family:var(--font-ui);margin-top:8px;letter-spacing:.04em}
+.row-featured .feat-text .feat-subtitle{font-size:14px;font-weight:700;color:#fff;font-family:var(--font-ui);line-height:1.4;margin:4px 0 10px;display:block}
 .hero.has-bg::before{content:'';position:absolute;inset:0;background:var(--hero-overlay);z-index:1}
 .hero-inner{position:relative;z-index:2;max-width:1400px;margin:0 auto;width:100%;padding:0 32px 100px;padding-left:calc(var(--sidebar-w) + 32px)}
 .hero h1{font-size:32px;font-weight:700;letter-spacing:-.5px;line-height:1.15;margin-bottom:10px;font-family:var(--font-ui);color:#fff}
@@ -117,20 +119,21 @@ body{font-family:var(--font-body);background:var(--black);color:var(--text);line
 /* ── Card (Spotify-style: no border, shadow on hover) ── */
 .card{background:var(--surface);border-radius:var(--radius-md);overflow:hidden;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease,background .15s ease;display:flex;flex-direction:column}
 .card:hover{transform:translateY(-2px);box-shadow:var(--shadow);background:var(--surface2)}
-.card-img{width:100%;height:170px;overflow:hidden;background:var(--surface2)}
+.card-img{width:100%;height:220px;overflow:hidden;background:var(--surface2)}
 .card-img img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease}
 .card:hover .card-img img{transform:scale(1.03)}
 .card-body{padding:16px 20px 20px;flex:1;display:flex;flex-direction:column}
 .card-body time{font-family:var(--font-ui);font-size:10.5px;font-weight:600;color:var(--green);letter-spacing:.08em;text-transform:capitalize}
 .card-body h2{font-size:16px;font-weight:700;margin:4px 0 8px;line-height:1.3;font-family:var(--font-ui)}
-.card-body p{font-size:15px;font-weight:400;color:var(--text2);line-height:1.5;font-family:var(--font-ui);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-top:auto}
+.card-body .card-subtitle{font-size:13px;font-weight:700;color:var(--text2);font-family:var(--font-ui);line-height:1.4;margin:2px 0 6px}
+.card-body p{font-size:14px;font-weight:400;color:var(--text2);line-height:1.5;font-family:var(--font-ui);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-top:auto}
 
 /* ── Full-width 1-col card ── */
 .row-full{background:var(--surface);border-radius:var(--radius-md);cursor:pointer;padding:32px 40px;transition:transform .2s ease,box-shadow .2s ease,background .15s ease}
 .row-full:hover{transform:translateY(-2px);box-shadow:var(--shadow);background:var(--surface2)}
 .row-full time{font-family:var(--font-ui);font-size:12px;font-weight:700;color:var(--green);letter-spacing:.06em;text-transform:capitalize}
 .row-full h2{font-size:20px;font-weight:700;margin:6px 0 10px;font-family:var(--font-ui)}
-.row-full p{font-size:15px;font-weight:400;color:var(--text2);line-height:1.55;font-family:var(--font-ui)}
+.row-full p{font-size:14px;font-weight:400;color:var(--text2);line-height:1.55;font-family:var(--font-ui)}
 
 /* ── Featured (2x height, cover image) ── */
 .row-featured{height:420px;cursor:pointer}
@@ -142,7 +145,7 @@ body{font-family:var(--font-body);background:var(--black);color:var(--text);line
 .row-featured .feat-text{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:40px}
 .row-featured .feat-text time{font-family:var(--font-ui);font-size:12px;font-weight:700;color:var(--green);letter-spacing:.06em;text-transform:capitalize}
 .row-featured .feat-text h2{font-size:24px;font-weight:700;margin:6px 0 10px;letter-spacing:-.3px;color:var(--text-bright);font-family:var(--font-ui)}
-.row-featured .feat-text p{font-size:15px;font-weight:400;color:var(--feat-p-color);line-height:1.5;font-family:var(--font-ui);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.row-featured .feat-text p{font-size:14px;font-weight:400;color:var(--feat-p-color);line-height:1.5;font-family:var(--font-ui);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 
 /* ── Badge (per DESIGN.md: 10.5px, 600 weight, capitalize) ── */
 .badge{display:inline-block;font-family:var(--font-ui);font-size:10.5px;font-weight:600;color:var(--blue);background:var(--badge-bg);padding:2px 8px;border-radius:2px;margin-bottom:8px;width:fit-content;letter-spacing:.04em;text-transform:capitalize}
@@ -151,6 +154,7 @@ body{font-family:var(--font-body);background:var(--black);color:var(--text);line
 .article-page{display:none}
 .article-page.active{display:block}
 .prose{max-width:780px;margin:0 auto;padding:48px 24px 100px;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+.about-prose{max-width:780px;margin:0 auto;padding:40px 24px 100px}
 .prose .back{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-ui);font-size:14px;font-weight:700;color:var(--text2);text-decoration:none;margin-bottom:24px;transition:color .15s}
 .prose .back:hover{color:var(--text)}
 .prose header{display:none}

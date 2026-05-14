@@ -1,11 +1,11 @@
 ---
 title: "Flappy bird，或者其他"
+subtitle: "本文发表于2014年5月7日"
 date: 2019-06-23
 bear_pk: 999B5E94-2185-4C36-8E51-51A574BFE2E0-20428-0000584E7228FED9
 ---
 
 #  Flappy bird，或者其他
-> 本文发表于2014年5月7日
 
 mini2里只有一个游戏，就是flappy bird。
 
