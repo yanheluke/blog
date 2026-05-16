@@ -2,10 +2,19 @@
 
 Static blog generated from Bear notes. Spotify dark theme per DESIGN.md.
 
+## Setup
+
+```
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
 ## Update workflow
 
 ```
 # Incremental (bearcli CLI, for daily use):
+source venv/bin/activate
 python3 export.py                     # New notes since last sync
 python3 export.py --limit 3           # Latest 3 from each section
 python3 export.py --since 2026-05-13  # Notes created after date
