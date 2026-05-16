@@ -160,7 +160,7 @@ body{font-family:var(--font-body);background:var(--black);color:var(--text);line
 .row-featured:hover .feat-cover{transform:translateY(-2px);box-shadow:var(--shadow)}
 .row-featured .feat-cover img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;transition:transform .3s ease}
 .row-featured:hover .feat-cover img{transform:scale(1.03)}
-.row-featured .feat-gradient{position:absolute;bottom:0;left:0;right:0;height:55%;background:var(--feat-overlay);z-index:1}
+.row-featured .feat-cover::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(18,18,18,.85) 0%,rgba(18,18,18,.35) 35%,transparent 60%);border-radius:var(--radius-md);z-index:1;pointer-events:none}
 .row-featured .feat-text{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:40px}
 .row-featured .feat-text time{font-family:var(--font-ui);font-size:12px;font-weight:700;color:var(--green);letter-spacing:.06em;text-transform:capitalize}
 .row-featured .feat-text h2{font-size:24px;font-weight:700;margin:6px 0 10px;letter-spacing:-.3px;color:var(--text-bright);font-family:var(--font-ui)}

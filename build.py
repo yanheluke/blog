@@ -262,8 +262,7 @@ def render_rows(rows_data):
             a = items[0]
             badge = ('<span class="badge">%s</span>' % a['course']) if a.get('course') else ''
             sub = ('<p class="feat-subtitle">%s</p>' % a['subtitle']) if a.get('subtitle') else ''
-            grad, tc, pc = cover_adaptive(a.get('cover'))
-            h += '<section class="row row-featured" onclick="openArticle(\'%s\')"><div class="feat-cover"><img src="%s" alt=""><div class="feat-gradient" style="background:%s"></div><div class="feat-text">%s<time>%s</time><h2 style="color:%s">%s</h2>%s<p style="color:%s">%s</p></div></div></section>\n' % (a['id'], a['cover'] or '', grad, badge, a['date'] or '', tc, a['title'], sub, pc, a['summary'])
+            h += '<section class="row row-featured" onclick="openArticle(\'%s\')"><div class="feat-cover"><img src="%s" alt=""><div class="feat-text">%s<time>%s</time><h2>%s</h2>%s<p>%s</p></div></div></section>\n' % (a['id'], a['cover'] or '', badge, a['date'] or '', a['title'], sub, a['summary'])
         elif rtype == 'cols3':
             h += '<section class="row row-3col">\n'
             for a in items:
