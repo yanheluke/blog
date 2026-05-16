@@ -117,42 +117,41 @@ body{font-family:var(--font-body);background:var(--black);color:var(--text);line
 .row-3col .card,.row-2col .card{flex:1}
 
 /* ── Card (Spotify-style: no border, shadow on hover) ── */
-.card{background:var(--surface);border-radius:var(--radius-md);overflow:hidden;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease,background .15s ease;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-2px);box-shadow:var(--shadow);background:var(--surface2)}
+.card{background:var(--surface);border-radius:var(--radius-md);overflow:hidden;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
 .card-img{width:100%;height:220px;overflow:hidden;background:var(--surface2)}
 .card-img img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease}
 .card:hover .card-img img{transform:scale(1.03)}
-.card-body{padding:16px 20px 20px;flex:1;display:flex;flex-direction:column}
-.card-body time{font-family:var(--font-ui);font-size:10.5px;font-weight:600;color:var(--green);letter-spacing:.08em;text-transform:capitalize}
-.card-body h2{font-size:16px;font-weight:700;margin:4px 0 8px;line-height:1.3;font-family:var(--font-ui)}
-.card-body .card-subtitle{font-size:13px;font-weight:700;color:var(--text2);font-family:var(--font-ui);line-height:1.4;margin:2px 0 6px}
-.card-body p{font-size:14px;font-weight:400;color:var(--text2);line-height:1.5;font-family:var(--font-ui);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-top:auto}
+.card-body{padding:22px 24px;display:flex;flex-direction:column}
+.card-body time{font-family:var(--font-ui);font-size:11px;font-weight:700;color:var(--green);letter-spacing:.08em;text-transform:capitalize}
+.card-body h2{font-size:18px;font-weight:700;margin:4px 0 6px;line-height:1.3;font-family:var(--font-ui)}
+.card-body .card-subtitle{font-size:14px;font-weight:700;color:var(--text2);font-family:var(--font-ui);line-height:1.4}
 
-/* ── Card with full-background cover (Spotify-style) ── */
-.card-cover{position:relative;min-height:280px;justify-content:flex-end;border-radius:var(--radius-md)}
+/* ── Card with full-background cover ── */
+.card-cover{position:relative;min-height:240px;justify-content:flex-end;border-radius:var(--radius-md);background-size:cover;background-position:center}
 .card-cover:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.card-cover::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(18,18,18,.85) 0%,rgba(18,18,18,.4) 40%,transparent 65%);border-radius:var(--radius-md);pointer-events:none}
 .card-cover .card-img{display:none}
-.card-cover .card-body{position:relative;z-index:1;padding:120px 20px 18px}
+.card-cover .card-body{position:relative;z-index:1;padding:120px 24px 22px}
 .card-cover .card-body h2{font-size:18px;font-family:var(--font-ui);color:#fff}
-.card-cover .card-body .card-subtitle{font-family:var(--font-ui);color:rgba(255,255,255,.8);margin:2px 0 4px}
-.card-cover .card-body p{font-family:var(--font-ui);color:rgba(255,255,255,.6);margin-top:0}
-.card-cover .card-body time{font-family:var(--font-ui);color:var(--green)}
+.card-cover .card-body .card-subtitle{font-size:14px;font-family:var(--font-ui);color:rgba(255,255,255,.8)}
+.card-cover .card-body time{font-family:var(--font-ui);font-size:11px;color:var(--green)}
 
 /* ── Full-width 1-col card ── */
-.row-full{background:var(--surface);border-radius:var(--radius-md);cursor:pointer;padding:32px 40px;transition:transform .2s ease,box-shadow .2s ease,background .15s ease}
-.row-full:hover{transform:translateY(-2px);box-shadow:var(--shadow);background:var(--surface2)}
+.row-full{background:var(--surface);border-radius:var(--radius-md);cursor:pointer;padding:28px 40px;transition:transform .2s ease,box-shadow .2s ease}
+.row-full:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
 .row-full time{font-family:var(--font-ui);font-size:12px;font-weight:700;color:var(--green);letter-spacing:.06em;text-transform:capitalize}
-.row-full h2{font-size:20px;font-weight:700;margin:6px 0 10px;font-family:var(--font-ui)}
-.row-full p{font-size:14px;font-weight:400;color:var(--text2);line-height:1.55;font-family:var(--font-ui)}
+.row-full h2{font-size:22px;font-weight:700;margin:6px 0 8px;font-family:var(--font-ui)}
+.row-full .card-subtitle{font-size:15px;font-weight:700;color:var(--text2);font-family:var(--font-ui);line-height:1.4}
 
 /* ── 1-col with full-background cover ── */
-.row-full-cover{position:relative;min-height:320px;border-radius:var(--radius-md);cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;padding:0;overflow:hidden}
+.row-full-cover{position:relative;min-height:280px;border-radius:var(--radius-md);cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;padding:0;overflow:hidden;background-size:cover;background-position:center}
 .row-full-cover:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.row-full-cover::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(18,18,18,.85) 0%,rgba(18,18,18,.4) 40%,transparent 65%);border-radius:var(--radius-md);pointer-events:none}
 .row-full-cover .full-body{position:relative;z-index:1;padding:120px 40px 32px}
 .row-full-cover .full-body h2{font-size:22px;font-family:var(--font-ui);color:#fff}
-.row-full-cover .full-body .card-subtitle{font-family:var(--font-ui);color:rgba(255,255,255,.8);margin:2px 0 6px}
-.row-full-cover .full-body p{font-family:var(--font-ui);color:rgba(255,255,255,.6);margin-top:0}
-.row-full-cover .full-body time{font-family:var(--font-ui);color:var(--green)}
+.row-full-cover .full-body .card-subtitle{font-size:15px;font-family:var(--font-ui);color:rgba(255,255,255,.8)}
+.row-full-cover .full-body time{font-family:var(--font-ui);font-size:12px;color:var(--green)}
 .row-full-cover .card-img{display:none}
 
 /* ── Featured (2x height, cover image) ── */

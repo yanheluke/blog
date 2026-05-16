@@ -270,7 +270,7 @@ def render_rows(rows_data):
                 cv = '<div class="card-img"><img src="%s" alt=""></div>' % a['cover'] if a['cover'] else ''
                 badge = '<span class="badge">%s</span>' % a['course'] if a.get('course') else ''
                 sub = ('<p class="card-subtitle">%s</p>' % a['subtitle']) if a.get('subtitle') else ''
-                h += '<article class="card" onclick="openArticle(\'%s\')">%s<div class="card-body">%s<time>%s</time><h2>%s</h2>%s<p>%s</p></div></article>\n' % (a['id'], cv, badge, a['date'] or '', a['title'], sub, a['summary'])
+                h += '<article class="card" onclick="openArticle(\'%s\')">%s<div class="card-body">%s<time>%s</time><h2>%s</h2>%s</div></article>\n' % (a['id'], cv, badge, a['date'] or '', a['title'], sub)
             h += '</section>\n'
         elif rtype == 'cols2':
             h += '<section class="row row-2col">\n'
@@ -279,11 +279,9 @@ def render_rows(rows_data):
                 sub = ('<p class="card-subtitle">%s</p>' % a['subtitle']) if a.get('subtitle') else ''
                 cover = a.get('cover')
                 if cover:
-                    grad, tc, pc = cover_adaptive(cover)
-                    bg = f'background:{grad}, url({cover}) center/cover'
-                    h += '<article class="card card-cover" style="%s" onclick="openArticle(\'%s\')"><div class="card-body">%s<time>%s</time><h2 style="color:%s">%s</h2>%s<p style="color:%s">%s</p></div></article>\n' % (bg, a['id'], badge, a['date'] or '', tc, a['title'], sub, pc, a['summary'])
+                    h += '<article class="card card-cover" style="background-image:url(%s);background-size:cover;background-position:center" onclick="openArticle(\'%s\')"><div class="card-body">%s<time>%s</time><h2>%s</h2>%s</div></article>\n' % (cover, a['id'], badge, a['date'] or '', a['title'], sub)
                 else:
-                    h += '<article class="card" onclick="openArticle(\'%s\')"><div class="card-body">%s<time>%s</time><h2>%s</h2>%s<p>%s</p></div></article>\n' % (a['id'], badge, a['date'] or '', a['title'], sub, a['summary'])
+                    h += '<article class="card" onclick="openArticle(\'%s\')"><div class="card-body">%s<time>%s</time><h2>%s</h2>%s</div></article>\n' % (a['id'], badge, a['date'] or '', a['title'], sub)
             h += '</section>\n'
         elif rtype == 'cols1':
             a = items[0]
@@ -291,11 +289,9 @@ def render_rows(rows_data):
             sub = ('<p class="card-subtitle">%s</p>' % a['subtitle']) if a.get('subtitle') else ''
             cover = a.get('cover')
             if cover:
-                grad, tc, pc = cover_adaptive(cover)
-                bg = f'background:{grad}, url({cover}) center/cover'
-                h += '<article class="row row-full-cover" style="%s" onclick="openArticle(\'%s\')"><div class="full-body">%s<time>%s</time><h2 style="color:%s">%s</h2>%s<p style="color:%s">%s</p></div></article>\n' % (bg, a['id'], badge, a['date'] or '', tc, a['title'], sub, pc, a['summary'])
+                h += '<article class="row row-full-cover" style="background-image:url(%s);background-size:cover;background-position:center" onclick="openArticle(\'%s\')"><div class="full-body">%s<time>%s</time><h2>%s</h2>%s</div></article>\n' % (cover, a['id'], badge, a['date'] or '', a['title'], sub)
             else:
-                h += '<article class="row row-full" onclick="openArticle(\'%s\')"><div class="full-body">%s<time>%s</time><h2>%s</h2>%s<p>%s</p></div></article>\n' % (a['id'], badge, a['date'] or '', a['title'], sub, a['summary'])
+                h += '<article class="row row-full" onclick="openArticle(\'%s\')"><div class="full-body">%s<time>%s</time><h2>%s</h2>%s</div></article>\n' % (a['id'], badge, a['date'] or '', a['title'], sub)
     return h
 
 # ═══════════════════════════════════════════════════════
