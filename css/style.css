@@ -128,14 +128,14 @@ body{font-family:var(--font-body);background:var(--black);color:var(--text);line
 .card-body .card-subtitle{font-size:14px;font-weight:700;color:var(--text2);font-family:var(--font-ui);line-height:1.4}
 
 /* ── Card with full-background cover ── */
-.card-cover{position:relative;min-height:240px;justify-content:flex-end;border-radius:var(--radius-md);background-size:cover;background-position:center}
+.card-cover{position:relative;min-height:300px;justify-content:flex-end;border-radius:var(--radius-md);background-size:cover;background-position:center}
 .card-cover:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
-.card-cover::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(18,18,18,.85) 0%,rgba(18,18,18,.4) 40%,transparent 65%);border-radius:var(--radius-md);pointer-events:none}
+.card-cover::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(18,18,18,.85) 0%,rgba(18,18,18,.4) 35%,transparent 60%);border-radius:var(--radius-md);pointer-events:none}
 .card-cover .card-img{display:none}
-.card-cover .card-body{position:relative;z-index:1;padding:120px 24px 22px}
+.card-cover .card-body{position:relative;z-index:1;padding:170px 24px 24px}
 .card-cover .card-body h2{font-size:18px;font-family:var(--font-ui);color:#fff}
 .card-cover .card-body .card-subtitle{font-size:14px;font-family:var(--font-ui);color:rgba(255,255,255,.8)}
-.card-cover .card-body time{font-family:var(--font-ui);font-size:11px;color:var(--green)}
+.card-cover .card-body time{font-family:var(--font-ui);font-size:11px;font-weight:700;color:var(--green)}
 
 /* ── Full-width 1-col card ── */
 .row-full{background:var(--surface);border-radius:var(--radius-md);cursor:pointer;padding:28px 40px;transition:transform .2s ease,box-shadow .2s ease}
@@ -145,13 +145,13 @@ body{font-family:var(--font-body);background:var(--black);color:var(--text);line
 .row-full .card-subtitle{font-size:15px;font-weight:700;color:var(--text2);font-family:var(--font-ui);line-height:1.4}
 
 /* ── 1-col with full-background cover ── */
-.row-full-cover{position:relative;min-height:280px;border-radius:var(--radius-md);cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;padding:0;overflow:hidden;background-size:cover;background-position:center}
+.row-full-cover{position:relative;min-height:400px;border-radius:var(--radius-md);cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;padding:0;overflow:hidden;background-size:cover;background-position:center}
 .row-full-cover:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
-.row-full-cover::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(18,18,18,.85) 0%,rgba(18,18,18,.4) 40%,transparent 65%);border-radius:var(--radius-md);pointer-events:none}
-.row-full-cover .full-body{position:relative;z-index:1;padding:120px 40px 32px}
+.row-full-cover::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(18,18,18,.85) 0%,rgba(18,18,18,.4) 35%,transparent 60%);border-radius:var(--radius-md);pointer-events:none}
+.row-full-cover .full-body{position:relative;z-index:1;padding:240px 40px 36px}
 .row-full-cover .full-body h2{font-size:22px;font-family:var(--font-ui);color:#fff}
 .row-full-cover .full-body .card-subtitle{font-size:15px;font-family:var(--font-ui);color:rgba(255,255,255,.8)}
-.row-full-cover .full-body time{font-family:var(--font-ui);font-size:12px;color:var(--green)}
+.row-full-cover .full-body time{font-family:var(--font-ui);font-size:12px;font-weight:700;color:var(--green)}
 .row-full-cover .card-img{display:none}
 
 /* ── Featured (2x height, cover image) ── */
