@@ -1,11 +1,11 @@
 ---
 title: "Flappy bird，或者其他"
-subtitle: "本文发表于2014年5月7日"
-date: 2019-06-23
-bear_pk: 999B5E94-2185-4C36-8E51-51A574BFE2E0-20428-0000584E7228FED9
+date: 2014-05-07
+tags: 杂谈
+obsidian_id: 4aeadc56
 ---
 
-#  Flappy bird，或者其他
+> 本文发表于2014年5月7日
 
 mini2里只有一个游戏，就是flappy bird。
 
@@ -32,6 +32,3 @@ mini2里只有一个游戏，就是flappy bird。
 后来又流行了很多游戏，2048什么的，都没去玩。
 
 夜深人静的时候，偶尔想起这只死了千百次的黄色笨鸟，还有点小感激呢。
-
-
-#Writing #Writing

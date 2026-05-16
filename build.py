@@ -75,6 +75,9 @@ def md_to_html(text, strip_fm=True):
         elif s.startswith('> '):
             if not in_bq: out.append('<blockquote>'); in_bq = True
             out.append(f'{_inl(s[2:])}<br>')
+        elif s == '>':
+            if not in_bq: out.append('<blockquote>'); in_bq = True
+            out.append('<br>')
         elif s in ('---','- - -','***'): flush_bq(); out.append('<hr>')
         elif re.match(r'[-*+]\s', s):
             flush_bq()
@@ -166,11 +169,11 @@ def load_articles(section):
 
         summary = extract_summary(html_body_for_summary)
 
-        bpk = meta.get('bear_pk', '0')
-        # Shorten UUID bear_pk to first 8 chars for clean URLs
-        if '-' in bpk and len(bpk) > 8:
-            bpk = bpk[:8]
-        aid = f'a{bpk}'
+        oid = meta.get('obsidian_id', meta.get('bear_pk', '0'))
+        # obsidian_id is already 8 chars; bear_pk needs shortening
+        if '-' in oid and len(oid) > 8:
+            oid = oid[:8]
+        aid = f'a{oid}'
 
         articles.append({
             'id': aid, 'title': title, 'date': pub_date,
@@ -200,9 +203,10 @@ def extract_cover(html):
 # ═══════════════════════════════════════════════════════
 
 def build_rows(articles):
-    """Content-adaptive layout: spaced featured for covers, default 2-col, no hardcoded 3-col."""
+    """Content-adaptive layout: spaced featured for covers, 2-col with periodic 1-col breathing room."""
     rows, cy, i = [], None, 0
     rows_since_featured = 0
+    cols2_since_cols1 = 0   # insert 1-col after every 2 consecutive 2-col rows
 
     while i < len(articles):
         a = articles[i]
@@ -213,18 +217,34 @@ def build_rows(articles):
 
         rem = articles[i:]
 
+        # 1-col breathing room: after every 2 consecutive 2-col rows
+        if cols2_since_cols1 >= 2:
+            rows.append(('cols1', y, [rem[0]]))
+            i += 1
+            rows_since_featured += 1
+            cols2_since_cols1 = 0
+            continue
+
         # Featured: current article has cover AND spaced by ≥2 non-featured rows
         if rem[0]['cover'] and rows_since_featured >= 2:
             rows.append(('featured', y, [rem[0]]))
             i += 1
             rows_since_featured = 0
+            cols2_since_cols1 = 0
             continue
 
-        # Default: 2-col
+        # Default: 2-col, but don't group articles from different years
         if len(rem) >= 2:
-            rows.append(('cols2', y, rem[:2]))
-            i += 2
-            rows_since_featured += 1
+            y_next = rem[1]['date'][:4] if rem[1]['date'] else 'Other'
+            if y != y_next:
+                rows.append(('cols1', y, [rem[0]]))
+                i += 1
+                rows_since_featured += 1
+            else:
+                rows.append(('cols2', y, rem[:2]))
+                i += 2
+                rows_since_featured += 1
+                cols2_since_cols1 += 1
         else:
             rows.append(('cols1', y, [rem[0]]))
             i += 1
@@ -262,9 +282,10 @@ def render_rows(rows_data):
             h += '</section>\n'
         elif rtype == 'cols1':
             a = items[0]
+            cv = '<div class="card-img"><img src="%s" alt=""></div>' % a['cover'] if a['cover'] else ''
             badge = '<span class="badge">%s</span>' % a['course'] if a.get('course') else ''
             sub = ('<p class="card-subtitle">%s</p>' % a['subtitle']) if a.get('subtitle') else ''
-            h += '<article class="row row-full" onclick="openArticle(\'%s\')"><div class="full-body">%s<time>%s</time><h2>%s</h2>%s<p>%s</p></div></article>\n' % (a['id'], badge, a['date'] or '', a['title'], sub, a['summary'])
+            h += '<article class="row row-full" onclick="openArticle(\'%s\')">%s<div class="full-body">%s<time>%s</time><h2>%s</h2>%s<p>%s</p></div></article>\n' % (a['id'], cv, badge, a['date'] or '', a['title'], sub, a['summary'])
     return h
 
 # ═══════════════════════════════════════════════════════

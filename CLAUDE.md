@@ -1,6 +1,6 @@
 # Blog Project
 
-Static blog generated from Bear notes. Spotify dark theme per DESIGN.md.
+Static blog generated from Obsidian notes. Spotify dark theme per DESIGN.md.
 
 ## Setup
 
@@ -13,47 +13,63 @@ pip install -r requirements.txt
 ## Update workflow
 
 ```
-# Incremental (bearcli CLI, for daily use):
+# Incremental (Obsidian vault, for daily use):
 source venv/bin/activate
-python3 export.py                     # New notes since last sync
-python3 export.py --limit 3           # Latest 3 from each section
-python3 export.py --since 2026-05-13  # Notes created after date
-python3 export.py --since last        # Notes since .last_sync
-python3 export.py --section writing   # Only writing section
+python3 export_obsidian.py                 # New notes since last sync
+python3 export_obsidian.py --section writing  # Only writing section
+python3 export_obsidian.py --full          # Full export (ignore .last_sync)
 python3 build.py
 
-# Full export (SQLite read-only, for init/disaster recovery):
-python3 export_full.py   # reads Bear SQLite (mode=ro), copies images from disk
-python3 build.py
+# Legacy Bear export (kept for reference, not daily use):
+python3 export.py --section writing --limit 1
+python3 export_full.py   # SQLite read-only, Bear only
 ```
 
-- `export.py` — incremental via `bearcli` CLI. No SQLite, no MCP. Supports `--limit`, `--since`, `--section`
-- `export_full.py` — SQLite **read-only** bulk export. Opens DB with `mode=ro`
-- Both use `{note_uuid[:8]}_{filename}` naming to prevent image collisions across notes
-- `.last_sync` file tracks last export date for `--since last` mode
-- `bear_pk` is the Bear note UUID (consistent between both scripts)
-
-**Always use Bear MCP tools / bearcli, never modify Bear SQLite DB directly.** SQLite read-only is acceptable for bulk export. If an operation requires writing to SQLite (e.g., changing creation timestamps), ask for explicit permission first.
-
-**Never modify Bear DB during this process — read only.**
+- `export_obsidian.py` — reads `.md` from Obsidian vault `~/Research Hub/`, copies images from `_assets/`. Supports `--section`, `--full`, `--limit`
+- `export.py` — legacy Bear export via `bearcli` CLI (kept for reference)
+- `export_full.py` — legacy Bear bulk export via SQLite (kept for reference)
+- `.last_sync` file tracks last export date for incremental sync
+- Image prefix uses `obsidian_id` (MD5 first 8 chars of vault-relative path)
 
 ## Architecture
 
-- `export.py` — incremental via `bearcli` CLI. Uses `bearcli search --format json` + `attachments save`. No SQLite, no MCP
-- `export_full.py` — bulk via SQLite read-only (`mode=ro`), copies images from Bear's file storage
+- `export_obsidian.py` — reads Obsidian vault `.md` files, parses YAML frontmatter, copies images from `_assets/{note-name}/`
 - `build.py` — reads local `.md`, generates `index.html` using `template.html`
 - `css/style.css` — all styles (Spotify dark, DESIGN.md-aligned)
 - `js/app.js` — all interactivity (section switching, hero swap, scroll restore, gallery lightbox)
 - `DEVELOPMENT.md` — pitfalls and lessons learned (read before major changes)
 - `DESIGN.md` — design system spec
 
-## Key rules — data
+## Obsidian vault structure
 
-- Use `ZCREATIONDATE` for dates, NEVER `ZMODIFICATIONDATE`
-- CoreData timestamps: `datetime.utcfromtimestamp(ts - 978307200)` (subtract, not add)
-- Image resolution: use `ZSFNOTEFILE.ZUNIQUEIDENTIFIER` (file UUID) to find directories, NOT note UUID. Query: `SELECT ZFILENAME, ZUNIQUEIDENTIFIER FROM ZSFNOTEFILE WHERE ZNOTE=?`
-- Image references in note text are URL-encoded — MUST `urllib.parse.unquote()` before matching against filesystem filenames
-- Always use `re.sub()` for global replacement of image references; `str.replace()` only replaces the first occurrence
+```
+~/Research Hub/
+  4. Writing/          → content/writing/ (filter: YAML tags include "Writing")
+  About Me.md          → content/about/
+  _assets/{note-name}/ → per-note images (subdirectory named after note)
+```
+
+## Obsidian YAML frontmatter
+
+```yaml
+---
+title: 文章标题              # Falls back to filename if absent
+subtitle: 副标题             # Optional, from YAML (NOT from blockquote)
+create_date: 2015-06-07      # YYYY-MM-DD, falls back to file mtime (UTC+8)
+modify_date: 2026-05-16      # Not used for blog, Obsidian tracking only
+tags:                        # YAML list; "Writing" tag = blog writing section
+  - 北京
+  - 杂谈
+---
+```
+
+## Key rules — data (Obsidian)
+
+- Date source: YAML `create_date` → file mtime (Beijing time UTC+8). Never use `modify_date`
+- Image storage: `_assets/{note-name}/{image.jpg}` — one subdirectory per note
+- Image references: standard `![](image.jpg)` in Markdown. OSS URLs used directly
+- `export_obsidian.py` auto-creates `covers/` and `images/` dirs, no manual cleanup needed
+- Never modify Obsidian vault files during export — read only
 
 ## Key rules — build
 
@@ -73,13 +89,6 @@ python3 build.py
 - Browser back/forward: `popstate` handler must restore both section AND article state, and handle hero style save/restore
 - KaTeX config in template: `$$` for display math, `$` for inline. No special preprocessing needed
 
-## Key rules — Bear DB
-
-- **Close Bear before modifying its SQLite DB.** Bear re-parses tags on restart and will undo direct DB changes
-- Tag format: `#simpleword` for no-space tags, `#multi word#` for tags with spaces, `#parent/child` for nesting
-- When modifying tags, update ALL THREE: inline `#tag` in ZTEXT, ZSFNOTETAG.ZTITLE, and Z_5TAGS associations
-- `ZISROOT=1` only for true root tags; compound tags (with `/`) should always have `ZISROOT=0`
-
 ## Layout
 
 - Content-adaptive in `build.py`: no hardcoded cycle
@@ -94,4 +103,3 @@ python3 build.py
 
 - Place `covers/home-writing.jpg` and `covers/home-academic.jpg` for section hero backgrounds
 - Falls back to first article's cover image if home-* files don't exist
-- **CRITICAL: `export.py` clears `covers/` on each run.** Files named `home-*` are now preserved (skip in the cleanup loop). When adding new hand-picked covers with special names, follow the `home-*` prefix convention or add an exception in `export.py` — otherwise they will be deleted on the next export.

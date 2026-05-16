@@ -1,10 +1,10 @@
 ---
 title: "About Me"
-date: 2022-09-15
-bear_pk: 86ED7855-FC08-4AA0-8AC8-41204938925D-657-0000023A4C4B42DF
+date: 2026-05-16
+tags: About
+obsidian_id: 90e7eccb
 ---
 
-# About Me
 > 千の夜をこえて 
 > 今あなたに会いに行こう
 > 伝えなきゃならないことがある
@@ -56,6 +56,3 @@ bear_pk: 86ED7855-FC08-4AA0-8AC8-41204938925D-657-0000023A4C4B42DF
 
 # 关于签名
 第一段来自[Aqua Timez](https://zh.wikipedia.org/wiki/Aqua_Timez)的[千の夜をこえて](https://music.douban.com/subject/1926414/), 2010年左右最喜欢的日文歌。这个乐队在2018年正式解散。
-
-
-#Writing/About

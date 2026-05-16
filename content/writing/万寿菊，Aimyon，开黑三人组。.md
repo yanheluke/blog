@@ -1,10 +1,11 @@
 ---
 title: "万寿菊，Aimyon，开黑三人组。"
 date: 2019-07-15
-bear_pk: 23AEE8D1-463E-48E2-B808-3555B91778FB-452-00000015FE6DC97E
+cover: "da1bdee0_file-20260516231226361.png"
+tags: 上海, 旅行, aimyon
+obsidian_id: da1bdee0
 ---
 
-# 万寿菊，Aimyon，开黑三人组。
 1.
 
 距离春节五月有余，终于又一次离开北京前往上海，为aimyon上海演唱会以及平安京三人组首次当面开黑。
@@ -66,4 +67,4 @@ BTW，邻座小姐姐吃的德州扒鸡太特么香了…
 
 一定。
 
-#Writing/游记 #Writing/上海 #Writing/2019 
+#Writing/_ #Writing/_ #Writing/2019

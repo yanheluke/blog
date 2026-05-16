@@ -1,12 +1,13 @@
 ---
-title: "Lost in Tkoyo 01"
-subtitle: "迷失东京01：东京塔的夜景、爱宕神社与涉谷"
+title: "Lost in Tokyo 01"
 date: 2025-01-19
-cover: "3C352D0A_shibuya.jpg"
-bear_pk: 3C352D0A-7D79-4F5A-8B4B-847983E4463A
+subtitle: "迷失东京01：东京塔的夜景、爱宕神社与涉谷"
+cover: "21efa51b_shibuya.jpg"
+tags: 杂记, 博客, 流水账
+obsidian_id: 21efa51b
 ---
 
-# Lost in Tkoyo 01> 纪念2025.01.01 - 01.05 的五天四夜东京之旅。
+> 纪念2025.01.01 - 01.05 的五天四夜东京之旅。
 > 很遗憾一次性并不能全部写完。
 
 ### 关于这次旅行
@@ -36,16 +37,16 @@ bear_pk: 3C352D0A-7D79-4F5A-8B4B-847983E4463A
 
 在涉谷抽了两根烟，去mont-bell买了件羽绒服，丑归丑，但的确轻薄保暖，现在已经是我的日常最爱冬季外套了。去唐吉坷德买了一堆小玩意儿和纪念品，排队结账时从喧嚣吵闹的人群中听到了商场广播放的歌是「几亿光年」。哦omoinotake实火，我的2024年年歌。
 
-![](../images/3C352D0A_B9E37655-03C6-4CD3-AEC6-6F10DBF57200_1_105_c.jpeg)<!-- {"width":462} -->
+![](images/21efa51b_B9E37655-03C6-4CD3-AEC6-6F10DBF57200_1_105_c.jpeg)<!-- {"width":462} -->
 地铁里的广告是原神，火神玛薇卡up，不愧是米桑故乡
 
-![](../images/3C352D0A_30FA4732-7215-4A7A-A05E-75CEE2DED5BD_1_102_o.jpeg)<!-- {"width":462} -->
+![](images/21efa51b_30FA4732-7215-4A7A-A05E-75CEE2DED5BD_1_102_o.jpeg)<!-- {"width":462} -->
 忠犬八公
 
-![](../images/3C352D0A_654D764D-BEE9-4F96-8C82-E8C0EE293EE2_1_102_o.jpeg)
+![](images/21efa51b_654D764D-BEE9-4F96-8C82-E8C0EE293EE2_1_102_o.jpeg)
 涉谷十字路口
 
-![](../images/3C352D0A_5A136B69-C4AB-489B-9EE6-6F341DC5EA81_1_102_o.jpeg)<!-- {"width":401} -->
+![](images/21efa51b_5A136B69-C4AB-489B-9EE6-6F341DC5EA81_1_102_o.jpeg)<!-- {"width":401} -->
 涉谷商业街
 
 
@@ -68,5 +69,3 @@ bear_pk: 3C352D0A-7D79-4F5A-8B4B-847983E4463A
 
 
 #Writing
-
-
