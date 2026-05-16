@@ -129,15 +129,14 @@ body{font-family:var(--font-body);background:var(--black);color:var(--text);line
 .card-body p{font-size:14px;font-weight:400;color:var(--text2);line-height:1.5;font-family:var(--font-ui);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-top:auto}
 
 /* ── Card with full-background cover (Spotify-style) ── */
-.card-cover{position:relative;min-height:280px;background-size:cover;background-position:center;justify-content:flex-end;border-radius:var(--radius-md)}
-.card-cover:hover{transform:translateY(-2px);box-shadow:var(--shadow);background-size:cover}
-.card-cover .card-gradient{position:absolute;bottom:0;left:0;right:0;height:70%;border-radius:0 0 var(--radius-md) var(--radius-md);z-index:0;pointer-events:none}
+.card-cover{position:relative;min-height:280px;justify-content:flex-end;border-radius:var(--radius-md)}
+.card-cover:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
 .card-cover .card-img{display:none}
-.card-cover .card-body{position:relative;z-index:1;padding:80px 20px 20px}
-.card-cover .card-body h2{color:#fff}
-.card-cover .card-body .card-subtitle{color:rgba(255,255,255,.75)}
-.card-cover .card-body p{color:rgba(255,255,255,.6)}
-.card-cover .card-body time{color:var(--green)}
+.card-cover .card-body{position:relative;z-index:1;padding:120px 20px 18px}
+.card-cover .card-body h2{font-size:18px;font-family:var(--font-ui);color:#fff}
+.card-cover .card-body .card-subtitle{font-family:var(--font-ui);color:rgba(255,255,255,.8);margin:2px 0 4px}
+.card-cover .card-body p{font-family:var(--font-ui);color:rgba(255,255,255,.6);margin-top:0}
+.card-cover .card-body time{font-family:var(--font-ui);color:var(--green)}
 
 /* ── Full-width 1-col card ── */
 .row-full{background:var(--surface);border-radius:var(--radius-md);cursor:pointer;padding:32px 40px;transition:transform .2s ease,box-shadow .2s ease,background .15s ease}
@@ -147,14 +146,13 @@ body{font-family:var(--font-body);background:var(--black);color:var(--text);line
 .row-full p{font-size:14px;font-weight:400;color:var(--text2);line-height:1.55;font-family:var(--font-ui)}
 
 /* ── 1-col with full-background cover ── */
-.row-full-cover{position:relative;min-height:320px;background-size:cover;background-position:center;border-radius:var(--radius-md);cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;padding:0;overflow:hidden}
+.row-full-cover{position:relative;min-height:320px;border-radius:var(--radius-md);cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;padding:0;overflow:hidden}
 .row-full-cover:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
-.row-full-cover .full-gradient{position:absolute;bottom:0;left:0;right:0;height:65%;z-index:0;pointer-events:none}
-.row-full-cover .full-body{position:relative;z-index:1;padding:100px 40px 32px}
-.row-full-cover .full-body h2{color:#fff}
-.row-full-cover .full-body .card-subtitle{color:rgba(255,255,255,.75)}
-.row-full-cover .full-body p{color:rgba(255,255,255,.6)}
-.row-full-cover .full-body time{color:var(--green)}
+.row-full-cover .full-body{position:relative;z-index:1;padding:120px 40px 32px}
+.row-full-cover .full-body h2{font-size:22px;font-family:var(--font-ui);color:#fff}
+.row-full-cover .full-body .card-subtitle{font-family:var(--font-ui);color:rgba(255,255,255,.8);margin:2px 0 6px}
+.row-full-cover .full-body p{font-family:var(--font-ui);color:rgba(255,255,255,.6);margin-top:0}
+.row-full-cover .full-body time{font-family:var(--font-ui);color:var(--green)}
 .row-full-cover .card-img{display:none}
 
 /* ── Featured (2x height, cover image) ── */
