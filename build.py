@@ -71,6 +71,7 @@ def md_to_html(text, strip_fm=True):
         if in_bq: out.append('</blockquote>'); in_bq = False
 
     for line in lines:
+        line = line.replace('\t', '  ')  # expand tabs for indent tracking
         line = re.sub(r'!\[([^\]]*)\]\(([^)]+)\)',
             lambda m: f'<img src="{m.group(2).strip(chr(126))}" alt="{m.group(1)}" loading="lazy">', line)
         s = line.strip()
