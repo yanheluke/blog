@@ -47,7 +47,24 @@ CONTENT_DIR = os.path.join(ROOT, 'content')
 def md_to_html(text, strip_fm=True):
     if not text: return ''
     lines = text.split('\n')
-    out, in_code, in_list, in_bq, lt = [], False, False, False, 'ul'
+    out, in_code, in_bq = [], False, False
+    list_stack = []   # [(depth, tag), ...]
+    li_stack = []     # depths of open <li> tags (innermost last)
+
+    def close_to_depth(target_depth):
+        """Close </li> + </ul/ol> until list stack top depth < target_depth."""
+        nonlocal list_stack, li_stack
+        while list_stack and list_stack[-1][0] >= target_depth:
+            # Close <li> at this list level if open
+            if li_stack and li_stack[-1] >= list_stack[-1][0]:
+                out.append('</li>')
+                li_stack.pop()
+            depth, tag = list_stack.pop()
+            out.append(f'</{tag}>')
+        # Close any orphaned <li>s at or above target
+        while li_stack and li_stack[-1] >= target_depth:
+            out.append('</li>')
+            li_stack.pop()
 
     def flush_bq():
         nonlocal in_bq
@@ -57,6 +74,7 @@ def md_to_html(text, strip_fm=True):
         line = re.sub(r'!\[([^\]]*)\]\(([^)]+)\)',
             lambda m: f'<img src="{m.group(2).strip(chr(126))}" alt="{m.group(1)}" loading="lazy">', line)
         s = line.strip()
+        indent = len(line) - len(line.lstrip())
 
         if s.startswith('```'):
             if in_code: out.append('</code></pre>'); in_code = False
@@ -64,40 +82,73 @@ def md_to_html(text, strip_fm=True):
             continue
         if in_code: out.append(line); continue
         if not s:
-            if in_list: out.append(f'</{lt}>'); in_list = False
+            close_to_depth(0)
             flush_bq()
             continue
 
-        if s.startswith('#### '): flush_bq(); out.append(f'<h5>{s[5:]}</h5>')
-        elif s.startswith('### '): flush_bq(); out.append(f'<h4>{s[4:]}</h4>')
-        elif s.startswith('## '): flush_bq(); out.append(f'<h3>{s[3:]}</h3>')
-        elif s.startswith('# '): flush_bq(); out.append(f'<h3>{s[2:]}</h3>')
+        ul_match = re.match(r'[-*+]\s', s)
+        ol_match = re.match(r'\d+[.)]\s', s)
+
+        if ul_match or ol_match:
+            flush_bq()
+            depth = indent // 2
+            tag = 'ul' if ul_match else 'ol'
+            content = _inl(s[2:]) if ul_match else _inl(re.sub(r'^\d+[.)]\s', '', s))
+
+            if not list_stack:
+                out.append(f'<{tag}>')
+                list_stack.append((depth, tag))
+                out.append(f'<li>{content}')
+                li_stack.append(depth)
+            elif depth > list_stack[-1][0]:
+                out.append(f'<{tag}>')
+                list_stack.append((depth, tag))
+                out.append(f'<li>{content}')
+                li_stack.append(depth)
+            elif depth == list_stack[-1][0]:
+                if li_stack and li_stack[-1] >= depth:
+                    out.append('</li>')
+                    li_stack.pop()
+                if list_stack[-1][1] != tag:
+                    close_to_depth(depth)
+                    out.append(f'<{tag}>')
+                    list_stack.append((depth, tag))
+                out.append(f'<li>{content}')
+                li_stack.append(depth)
+            else:
+                # Shallower: close deeper lists, then close parent <li> at current depth
+                close_to_depth(depth + 1)
+                if li_stack and li_stack[-1] >= depth:
+                    out.append('</li>')
+                    li_stack.pop()
+                if not list_stack or list_stack[-1][0] < depth:
+                    out.append(f'<{tag}>')
+                    list_stack.append((depth, tag))
+                elif list_stack[-1][1] != tag:
+                    close_to_depth(depth)
+                    out.append(f'<{tag}>')
+                    list_stack.append((depth, tag))
+                out.append(f'<li>{content}')
+                li_stack.append(depth)
+        elif s.startswith('#### '): close_to_depth(0); flush_bq(); out.append(f'<h5>{s[5:]}</h5>')
+        elif s.startswith('### '): close_to_depth(0); flush_bq(); out.append(f'<h4>{s[4:]}</h4>')
+        elif s.startswith('## '): close_to_depth(0); flush_bq(); out.append(f'<h3>{s[3:]}</h3>')
+        elif s.startswith('# '): close_to_depth(0); flush_bq(); out.append(f'<h3>{s[2:]}</h3>')
         elif s.startswith('> '):
+            close_to_depth(0)
             if not in_bq: out.append('<blockquote>'); in_bq = True
             out.append(f'{_inl(s[2:])}<br>')
         elif s == '>':
+            close_to_depth(0)
             if not in_bq: out.append('<blockquote>'); in_bq = True
             out.append('<br>')
-        elif s in ('---','- - -','***'): flush_bq(); out.append('<hr>')
-        elif re.match(r'[-*+]\s', s):
-            flush_bq()
-            if not in_list or lt != 'ul':
-                if in_list: out.append(f'</{lt}>')
-                out.append('<ul>'); in_list, lt = True, 'ul'
-            out.append(f'<li>{_inl(s[2:])}</li>')
-        elif re.match(r'\d+[.)]\s', s):
-            flush_bq()
-            if not in_list or lt != 'ol':
-                if in_list: out.append(f'</{lt}>')
-                out.append('<ol>'); in_list, lt = True, 'ol'
-            c2 = re.sub(r'^\d+[.)]\s', '', s)
-            out.append(f'<li>{_inl(c2)}</li>')
+        elif s in ('---','- - -','***'): close_to_depth(0); flush_bq(); out.append('<hr>')
         else:
-            if in_list: out.append(f'</{lt}>'); in_list = False
+            close_to_depth(0)
             flush_bq()
             out.append(f'<p>{_inl(s)}</p>')
 
-    if in_list: out.append(f'</{lt}>')
+    close_to_depth(0)
     flush_bq()
     if in_code: out.append('</code></pre>')
     return '\n'.join(out)
