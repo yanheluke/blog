@@ -141,7 +141,7 @@ def extract_cover_info(text, note_dir, prefix):
                     lines.pop(li)
                 return None, src, '\n'.join(lines)
             else:
-                fname = os.path.basename(src)
+                fname = os.path.basename(src).replace(' ', '_')
                 unique_fn = f'{prefix}_{fname}'
                 asset_path = os.path.join(note_dir, fname)
                 if os.path.isfile(asset_path):
@@ -155,7 +155,7 @@ def extract_cover_info(text, note_dir, prefix):
     for li, src, full_match in all_images:
         if src.startswith('http'):
             return None, src, text
-        fname = os.path.basename(src)
+        fname = os.path.basename(src).replace(' ', '_')
         unique_fn = f'{prefix}_{fname}'
         asset_path = os.path.join(note_dir, fname)
         if os.path.isfile(asset_path):
@@ -182,7 +182,7 @@ def copy_inline_images(text, note_dir, prefix):
 def _copy_image_ref(m, note_dir, prefix):
     alt = m.group(1)
     src = m.group(2)
-    fname = os.path.basename(src)
+    fname = os.path.basename(src).replace(' ', '_')
     unique_fn = f'{prefix}_{fname}'
 
     dest = os.path.join(IMAGE_DIR, unique_fn)
