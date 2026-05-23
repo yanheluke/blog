@@ -180,7 +180,7 @@ body{font-family:var(--font-body);background:var(--black);color:var(--text);line
 .prose header{display:none}
 .prose header time{font-family:var(--font-ui);font-size:12px;font-weight:700;color:var(--green);letter-spacing:.06em;text-transform:capitalize}
 .prose header h1{font-size:32px;font-weight:700;letter-spacing:-.5px;line-height:1.2;margin-top:8px;font-family:var(--font-ui)}
-.prose h3{font-size:26px;font-weight:600;margin:48px 0 16px;font-family:var(--font-ui);line-height:1.3}
+.prose h3{font-size:26px;font-weight:600;margin:48px 0 16px;font-family:var(--font-ui);line-height:1.3;color:var(--green)}
 .prose h4{font-size:22px;font-weight:700;margin:40px 0 14px;font-family:var(--font-ui)}
 .prose h5{font-size:18px;font-weight:700;margin:32px 0 10px;color:var(--text2);font-family:var(--font-ui)}
 .prose p{margin-bottom:1.8rem;font-size:16px;font-weight:400;line-height:1.7}
@@ -188,7 +188,7 @@ body{font-family:var(--font-body);background:var(--black);color:var(--text);line
 .prose ul,.prose ol{margin:12px 0 24px 28px}
 .prose li{margin-bottom:6px;font-size:16px;font-weight:400}
 .prose li::marker{color:var(--green)}
-.prose hr{border:none;border-top:1px solid var(--divider);margin:40px 0}
+.prose hr{border:none;border-top:1px solid var(--green);margin:40px 0;opacity:.4}
 .prose strong{font-weight:700}
 .prose a{color:var(--green);text-decoration:none}
 .prose a:hover{text-decoration:underline}
@@ -197,6 +197,10 @@ body{font-family:var(--font-body);background:var(--black);color:var(--text);line
 .prose pre code{background:none;padding:0}
 .prose img{display:block;width:100%;height:auto;max-width:100%;border-radius:var(--radius);margin:20px 0}
 .prose p img{margin:12px 0}
+.prose img.portrait{width:auto;max-width:62%;margin:24px auto}
+.prose figure{margin:24px 0}
+.prose figure img,.prose figure img.portrait{margin:0 auto}
+.prose figcaption{font-size:14px;font-weight:400;color:var(--text2);text-align:center;margin-top:8px;font-family:var(--font-ui);line-height:1.5}
 .prose .badge{margin-bottom:12px}
 .katex-display{margin:20px 0;overflow-x:auto}
 

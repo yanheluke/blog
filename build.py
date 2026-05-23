@@ -50,18 +50,24 @@ def md_to_html(text, strip_fm=True):
     out, in_code, in_bq = [], False, False
     list_stack = []   # [(depth, tag), ...]
     li_stack = []     # depths of open <li> tags (innermost last)
+    blanks = 0        # consecutive blank line counter
+
+    def flush_blanks():
+        """Emit <br> for extra blank lines beyond the first."""
+        nonlocal blanks
+        if blanks > 1:
+            out.extend(['<br>'] * (blanks - 1))
+        blanks = 0
 
     def close_to_depth(target_depth):
         """Close </li> + </ul/ol> until list stack top depth < target_depth."""
         nonlocal list_stack, li_stack
         while list_stack and list_stack[-1][0] >= target_depth:
-            # Close <li> at this list level if open
             if li_stack and li_stack[-1] >= list_stack[-1][0]:
                 out.append('</li>')
                 li_stack.pop()
             depth, tag = list_stack.pop()
             out.append(f'</{tag}>')
-        # Close any orphaned <li>s at or above target
         while li_stack and li_stack[-1] >= target_depth:
             out.append('</li>')
             li_stack.pop()
@@ -71,22 +77,25 @@ def md_to_html(text, strip_fm=True):
         if in_bq: out.append('</blockquote>'); in_bq = False
 
     for line in lines:
-        line = line.replace('\t', '  ')  # expand tabs for indent tracking
+        line = line.replace('\t', '  ')
         line = re.sub(r'!\[([^\]]*)\]\(([^)]+)\)',
             lambda m: f'<img src="{m.group(2).strip(chr(126))}" alt="{m.group(1)}" loading="lazy">', line)
         s = line.strip()
         indent = len(line) - len(line.lstrip())
 
         if s.startswith('```'):
+            flush_blanks()
             if in_code: out.append('</code></pre>'); in_code = False
             else: out.append('<pre><code>'); in_code = True
             continue
         if in_code: out.append(line); continue
         if not s:
+            blanks += 1
             close_to_depth(0)
             flush_bq()
             continue
 
+        flush_blanks()
         ul_match = re.match(r'[-*+]\s', s)
         ol_match = re.match(r'\d+[.)]\s', s)
 
@@ -135,14 +144,11 @@ def md_to_html(text, strip_fm=True):
         elif s.startswith('### '): close_to_depth(0); flush_bq(); out.append(f'<h4>{s[4:]}</h4>')
         elif s.startswith('## '): close_to_depth(0); flush_bq(); out.append(f'<h3>{s[3:]}</h3>')
         elif s.startswith('# '): close_to_depth(0); flush_bq(); out.append(f'<h3>{s[2:]}</h3>')
-        elif s.startswith('> '):
+        elif s.startswith('>'):
             close_to_depth(0)
             if not in_bq: out.append('<blockquote>'); in_bq = True
-            out.append(f'{_inl(s[2:])}<br>')
-        elif s == '>':
-            close_to_depth(0)
-            if not in_bq: out.append('<blockquote>'); in_bq = True
-            out.append('<br>')
+            content = s[1:].lstrip()  # handles '> text', '>text', '>'
+            out.append(f'{_inl(content)}<br>' if content else '<br>')
         elif s in ('---','- - -','***'): close_to_depth(0); flush_bq(); out.append('<hr>')
         else:
             close_to_depth(0)
@@ -152,14 +158,52 @@ def md_to_html(text, strip_fm=True):
     close_to_depth(0)
     flush_bq()
     if in_code: out.append('</code></pre>')
-    return '\n'.join(out)
+    html = '\n'.join(out)
+
+    # Post-process: wrap image + *caption* in <figure>
+    html = re.sub(
+        r'<p>(<img[^>]*>)</p>\s*<p>(<em>[^<]*</em>)</p>',
+        r'<figure>\1<figcaption>\2</figcaption></figure>',
+        html
+    )
+
+    # Post-process: add portrait class to tall images
+    html = re.sub(
+        r'<img src="([^"]+)"',
+        lambda m: _img_with_orientation(m),
+        html
+    )
+
+    return html
 
 def _inl(t):
     t = re.sub(r'~~(.+?)~~', r'<s>\1</s>', t)
     t = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', t)
+    t = re.sub(r'\*(.+?)\*', r'<em>\1</em>', t)
     t = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2" target="_blank" rel="noopener">\1</a>', t)
     t = re.sub(r'`([^`]+)`', r'<code>\1</code>', t)
     return t
+
+ORIENT_CACHE = {}  # path → 'portrait' or ''
+
+def _img_with_orientation(m):
+    """Add class='portrait' to img tag if image is taller than wide."""
+    src = m.group(1)
+    if src in ORIENT_CACHE:
+        extra = ORIENT_CACHE[src]
+    else:
+        extra = ''
+        if not src.startswith('http'):
+            img_path = os.path.join(ROOT, src)
+            try:
+                img = Image.open(img_path)
+                w, h = img.size
+                if h >= w * 0.85:  # square or portrait
+                    extra = ' class="portrait"'
+            except Exception:
+                pass
+        ORIENT_CACHE[src] = extra
+    return f'<img src="{src}"{extra}'
 
 # ═══════════════════════════════════════════════════════
 # ARTICLE LOADING
@@ -195,6 +239,8 @@ def load_articles(section):
         cover_file = meta.get('cover', None)
         cover_oss = meta.get('cover_oss', None)
         subtitle = meta.get('subtitle', None)
+        tags_str = meta.get('tags', '')
+        tags = [t.strip() for t in tags_str.split(',') if t.strip()] if tags_str else []
 
         html_body = md_to_html(body)
 
@@ -232,6 +278,7 @@ def load_articles(section):
             'subtitle': subtitle,
             'summary': summary, 'cover': cover,
             'course': course_id, 'section': section,
+            'tags': tags,
             'body': html_body,
             'cover_file': cover_file,
             'cover_oss': cover_oss,
@@ -268,6 +315,14 @@ def build_rows(articles):
             rows.append(('year', y, None))
 
         rem = articles[i:]
+
+        # Force 1-col for articles tagged '年终记'
+        if '年终记' in rem[0].get('tags', []):
+            rows.append(('cols1', y, [rem[0]]))
+            i += 1
+            rows_since_featured += 1
+            cols2_since_cols1 = 0
+            continue
 
         # 1-col breathing room: after every 2 consecutive 2-col rows
         if cols2_since_cols1 >= 2:
