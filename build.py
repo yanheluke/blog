@@ -251,7 +251,6 @@ def load_articles(section):
         html_body = md_to_html(body)
 
         # Strip duplicate <h3>Title</h3> before extracting summary
-        # Handle optional whitespace inside <h3> (e.g. "#  Title" → "<h3> Title</h3>")
         title_pattern = re.compile(
             r'<h3>\s*' + re.escape(title) + r'\s*</h3>',
             re.IGNORECASE
@@ -279,13 +278,30 @@ def load_articles(section):
             oid = oid[:8]
         aid = f'a{oid}'
 
+        # Extract headings from body for TOC
+        headings = []
+        seen_ids = set()
+        for m in re.finditer(r'<(h[345])[^>]*>(.*?)</\1>', html_body_for_summary):
+            level = int(m.group(1)[1])
+            text = re.sub(r'<[^>]+>', '', m.group(2)).strip()
+            hid = 'h-' + re.sub(r'[^a-z0-9一-鿿]+', '-', text.lower()).strip('-')
+            # deduplicate
+            base_hid = hid
+            n = 1
+            while hid in seen_ids:
+                n += 1
+                hid = f'{base_hid}-{n}'
+            seen_ids.add(hid)
+            headings.append({'level': level, 'text': text, 'id': hid})
+
         articles.append({
             'id': aid, 'title': title, 'date': pub_date,
             'subtitle': subtitle,
             'summary': summary, 'cover': cover,
             'course': course_id, 'section': section,
             'tags': tags,
-            'body': html_body,
+            'headings': headings,
+            'body': html_body_for_summary,
             'cover_file': cover_file,
             'cover_oss': cover_oss,
         })
@@ -434,6 +450,28 @@ WRITING_ROWS = render_rows(build_rows(writing_arts))
 MITX_ROWS = render_rows(build_rows(mitx_arts))
 
 print("Rendering article pages...")
+def inject_heading_ids(body, headings):
+    """Add id attributes to headings in body HTML. Returns modified body."""
+    idx = [0]  # mutable counter
+    def repl(m):
+        if idx[0] < len(headings):
+            hid = headings[idx[0]]['id']
+            idx[0] += 1
+            return re.sub(r'<(h[345])', f'<\\1 id="{hid}"', m.group(0), count=1)
+        return m.group(0)
+    return re.sub(r'<(h[345])[^>]*>.*?</\1>', repl, body)
+
+
+def build_toc(headings):
+    """Generate TOC HTML with CSS-based indentation (flat <ul>)."""
+    if not headings:
+        return ''
+    items = []
+    for h in headings:
+        items.append(f'<li class="toc-l{h["level"]}"><a href="#{h["id"]}">{h["text"]}</a></li>')
+    return f'<nav class="toc"><div class="toc-title">On this page</div><ul class="toc-list">\n' + '\n'.join(items) + '\n</ul></nav>'
+
+
 ARTICLES_HTML = ''
 for a in writing_arts + mitx_arts + about_arts:
     badge = '<span class="badge">%s</span>' % a['course'] if a.get('course') else ''
@@ -451,7 +489,11 @@ for a in writing_arts + mitx_arts + about_arts:
     cover_attr = ' data-cover="%s"' % a['cover'] if a['cover'] else ''
     sub_attr = ' data-subtitle="%s"' % a['subtitle'].replace('"', '&quot;') if a.get('subtitle') else ''
 
-    ARTICLES_HTML += '<div class="article-page" id="%s"%s%s><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header>%s<time>%s</time><h1>%s</h1></header>%s</article></div>\n' % (a['id'], cover_attr, sub_attr, badge, a['date'] or '', a['title'], body)
+    # Inject heading IDs and build TOC
+    toc_html = build_toc(a.get('headings', []))
+    body_with_ids = inject_heading_ids(body, a.get('headings', []))
+
+    ARTICLES_HTML += '<div class="article-page" id="%s"%s%s><div class="article-layout"><article class="prose"><a href="javascript:void(0)" class="back" onclick="closeArticle()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back</a><header>%s<time>%s</time><h1>%s</h1></header>%s</article>%s</div></div>\n' % (a['id'], cover_attr, sub_attr, badge, a['date'] or '', a['title'], body_with_ids, toc_html)
 
 # ═══════════════════════════════════════════════════════
 # GALLERY

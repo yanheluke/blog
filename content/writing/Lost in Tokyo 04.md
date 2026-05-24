@@ -19,10 +19,12 @@ obsidian_id: db9221c6
 ![](https://yanheluke.oss-cn-beijing.aliyuncs.com/0C735DA7-460D-43BD-9245-CCB683ABB905_1_102_o.jpeg)
 
 在浅草寺看到了米家三件套之绝区零的宣传海报，至此三件套的广告全部get。不愧是米桑的故乡。
+
 ![](https://yanheluke.oss-cn-beijing.aliyuncs.com/B083582B-310E-4211-BDF4-230E020F82C2_1_105_c.jpeg)
 ![](https://yanheluke.oss-cn-beijing.aliyuncs.com/05DE6532-5EB7-461D-98D6-D843CFA80327_1_102_o.jpeg)
 
-浅草寺主体建筑
+### 浅草寺主体建筑
+
 ![](https://yanheluke.oss-cn-beijing.aliyuncs.com/DB2D126B-E6BD-4542-BDAC-CF49359C7B05_1_102_o.jpeg)
 ![](https://yanheluke.oss-cn-beijing.aliyuncs.com/56FDF361-65BA-4F5C-BAA3-86580A60D24B_1_102_o.jpeg)
 ![](https://yanheluke.oss-cn-beijing.aliyuncs.com/734BD872-2795-401C-934E-0B5A76B248DB_1_105_c.jpeg)
@@ -54,8 +56,10 @@ obsidian_id: db9221c6
 
 5号早上和老张商量想买个iPhone 16 Pro，因为我确实不太喜欢现在的15 Pro Max屏幕太大。但日本现在的iPhone也比较容易缺货，所以5号早上起一大早就跑新宿的几个电器城：Bic Camera、山田电机等等。但最后跑了大概五六个电器城还是缺货，遂放弃。
 
-新宿地铁站出口的鸽子
+
 ![](https://yanheluke.oss-cn-beijing.aliyuncs.com/E71D6443-A5E2-49FC-8D70-43239513C5C8_1_105_c.jpeg)
+*新宿地铁站出口的鸽子*
+
 
 中午吃了一家干拌拉面，我和老张各点了一份「地狱辣」，一开始还不屑：日本的地狱辣能有多辣，我打算面不改色吃完之后面对服务员不可置信的眼神，轻飘飘留下一句「私たちは四川人です」。结果吃到一半我和老张就已经被辣的面红耳赤不停喝水，最后也没把面吃完就灰溜溜走了……
 
