@@ -193,15 +193,21 @@ def _img_with_orientation(m):
         extra = ORIENT_CACHE[src]
     else:
         extra = ''
-        if not src.startswith('http'):
-            img_path = os.path.join(ROOT, src)
-            try:
+        try:
+            if src.startswith('http'):
+                import urllib.request
+                with urllib.request.urlopen(src, timeout=5) as resp:
+                    data = resp.read()
+                from io import BytesIO
+                img = Image.open(BytesIO(data))
+            else:
+                img_path = os.path.join(ROOT, src)
                 img = Image.open(img_path)
-                w, h = img.size
-                if h >= w * 0.85:  # square or portrait
-                    extra = ' class="portrait"'
-            except Exception:
-                pass
+            w, h = img.size
+            if h >= w * 0.85:
+                extra = ' class="portrait"'
+        except Exception:
+            pass
         ORIENT_CACHE[src] = extra
     return f'<img src="{src}"{extra}'
 
